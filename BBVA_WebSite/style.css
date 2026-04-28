@@ -4,7 +4,7 @@
 @font-face {
     font-family: 'BentonSansBBVA';
     src: url('./BentonSansBBVA-Book-Lite.otf') format('opentype');
-    font-weight: normal;
+    font-weight: normal 300;
     font-style: normal;
 }
 
@@ -230,4 +230,391 @@ body {
 
 .btn-access:hover {
     background-color: var(--bbva-core-blue);
+}
+
+/* =========================================================
+   CARRUSEL HERO BBVA
+   Desarrollado por: [Tu nombre]
+   ========================================================= */
+ 
+/* --- Sección principal del carrusel --- */
+/* DESPUÉS */
+.hero-carousel {
+    width: 100%;
+    max-width: 98%;   /* ← elimina esta línea */
+    margin: 0 auto;      /* ← elimina esta línea */
+    margin-top: 136px;
+    
+    
+}
+ 
+/* --- Ventana de visualización (oculta lo que se sale) --- */
+.carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+}
+ 
+/* --- Pista que contiene todos los slides en fila --- */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+ 
+/* --- Slide base: cada diapositiva ocupa el 100% del viewport --- */
+.carousel-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-radius: 16px;
+}
+ 
+/* =========================================================
+   VARIANTE 1: Slides de fondo oscuro (Slide 1 y 2)
+   ========================================================= */
+ 
+.slide-type-hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-items: flex-start; 
+    padding: 64px 450px;
+    min-height: 670px;
+}
+ 
+/* Slide 1 – Fondo oscuro con cortina azul
+   Cuando tengas la imagen real reemplaza este gradiente por:
+   background-image: url('./tu-imagen-slide1.jpg');
+*/
+.slide-bg-1 {
+    background-image: url('https://www.bbva.com.co/content/dam/public-web/colombia/images/rcp/incentivos-bbva-gana-ahorrando-02.im1775601124912im.jpg?imwidth=2400');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+ 
+/* Slide 2 – Mercado de flores
+   Cuando tengas la imagen real reemplaza este gradiente por:
+   background-image: url('./tu-imagen-slide2.jpg');
+   y añade un overlay oscuro encima del texto
+*/
+.slide-bg-2 {
+    background: linear-gradient(135deg, #2c4a1e 0%, #3d6b2a 35%, #5a8b40 65%, #7aad55 100%);
+}
+ 
+/* Tarjeta flotante blanca (slides oscuros) */
+.hero-card {
+    background: var(--bbva-white);
+    border-radius: 18px;
+    padding: 24px 24px;
+    max-width: 660px;
+    margin-top: 120px;
+    min-height: 370px; 
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+ 
+.hero-card__title {
+    font-size: 45px;
+    font-weight: 700;     
+    line-height: 48px;
+    color: var(--bbva-core-blue);
+    line-height: 1.25;
+    margin-bottom: 30px;
+}
+
+ 
+.hero-card__body {
+    font-size: 17px;
+    font-weight: 300; 
+    color: #070e46;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+ 
+.hero-card__body strong {
+    font-weight: 700;
+}
+ 
+.hero-card__tagline {
+    font-size: 14px;
+    color: var(--bbva-text-dark);
+    margin-bottom: 24px;
+}
+ 
+.hero-card__actions {
+    margin-top: 25px;
+}
+ 
+/* ── Elemento decorativo Slide 1: Cheque gigante ──
+   Reemplaza todo el bloque .slide1-image-placeholder por:
+   <img src="./tu-foto-persona.png" alt="Persona sosteniendo cheque de $120 millones" class="slide1-person-img">
+   y añade la regla CSS que posicione la imagen a la derecha
+*/
+.slide1-image-placeholder {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+ 
+.fake-cheque {
+    background: var(--bbva-white);
+    border-radius: 4px;
+    padding: 20px 40px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+ 
+.fake-cheque__label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bbva-text-gray);
+    margin-bottom: 4px;
+}
+ 
+.fake-cheque__amount {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--bbva-text-dark);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+ 
+.fake-cheque__brand {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--bbva-navy);
+}
+ 
+/* ── Badge Coljuegos (esquina inferior derecha) ── */
+.coljuegos-badge {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    background: var(--bbva-white);
+    border-radius: 8px;
+    padding: 8px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+ 
+.coljuegos-badge__label {
+    font-size: 10px;
+    color: var(--bbva-text-gray);
+}
+ 
+.coljuegos-badge__brand {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--bbva-text-dark);
+}
+ 
+.coljuegos-badge__o {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e74c3c, #f39c12);
+    color: transparent;
+    font-size: 0;
+    vertical-align: middle;
+    margin: 0 1px;
+    position: relative;
+    top: -1px;
+}
+ 
+ 
+/* =========================================================
+   VARIANTE 2: Slides de fondo claro – layout dividido (Slides 3 y 4)
+   ========================================================= */
+ 
+.slide-type-split {
+    background-color: var(--bbva-bg-gray);
+    padding: 64px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    min-height: 520px;
+}
+ 
+/* Columna izquierda: texto */
+.slide-split__content {
+    flex: 0 0 auto;
+    max-width: 480px;
+}
+ 
+.slide-split__badge {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--bbva-text-gray);
+    margin-bottom: 16px;
+}
+ 
+.slide-split__title {
+    font-size: 36px;
+    color: var(--bbva-navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+ 
+.slide-split__body {
+    font-size: 14px;
+    color: var(--bbva-text-dark);
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+ 
+.slide-split__actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+ 
+/* Columna derecha: imagen
+   IMPORTANTE: cuando tengas la imagen real, reemplaza el div '.slide-split__img'
+   por un elemento <img> con la clase 'slide-split__img' así:
+   <img src="./tu-imagen.jpg" alt="Descripción" class="slide-split__img">
+   El CSS ya está listo para estilizarlo correctamente.
+*/
+.slide-split__img {
+    flex: 0 0 auto;
+    width: 480px;
+    height: 370px;
+    border-radius: 16px;
+    overflow: hidden;
+    object-fit: cover; /* Listo para cuando sea un <img> real */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: rgba(0,0,0,0.35);
+    font-style: italic;
+}
+ 
+/* Placeholder visual Slide 3 – Familia en playa */
+.slide-img-family {
+    background: linear-gradient(135deg, #c9d6df 0%, #e2ebf0 50%, #b8cdd9 100%);
+}
+ 
+/* Placeholder visual Slide 4 – Tarjeta Colombia Vive */
+.slide-img-card {
+    background: linear-gradient(135deg, #1a2a1a 0%, #2d4a2a 40%, #4a7a3d 70%, #3d6b2a 100%);
+    color: rgba(255,255,255,0.5);
+}
+ 
+.img-placeholder-label {
+    pointer-events: none;
+    user-select: none;
+}
+ 
+/* =========================================================
+   BOTONES DEL CARRUSEL
+   ========================================================= */
+ 
+/* Botón primario (relleno azul) */
+.btn-carousel-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bbva-navy);
+    color: var(--bbva-white);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 17px;
+    padding: 20px 36px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+ 
+.btn-carousel-primary:hover {
+    background-color: var(--bbva-core-blue);
+}
+ 
+/* Botón secundario (borde, sin fondo) */
+.btn-carousel-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--bbva-navy);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 4px;
+    border: 2px solid var(--bbva-navy);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+ 
+.btn-carousel-secondary:hover {
+    background-color: var(--bbva-navy);
+    color: var(--bbva-white);
+}
+ 
+/* =========================================================
+   CONTROLES DE NAVEGACIÓN (flechas y contador)
+   ========================================================= */
+ 
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 20px;
+}
+ 
+.carousel-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: #001391;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, background-color 0.2s;
+}
+ 
+.carousel-btn:hover {
+    color: var(--bbva-navy);
+    background-color: rgba(0, 19, 145, 0.08);
+}
+ 
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+}
+ 
+.carousel-counter {
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 400;      /* ← añade esto */
+    color: #070e46; 
+    min-width: 48px;
+    text-align: center;
+    user-select: none;
 }
