@@ -884,7 +884,7 @@ body {
    ========================================================= */
 
 .promo-highlight-section {
-    padding: 1.2rem 0 100px;
+    padding: 1.2rem 0 30px;
     background-color: var(--bbva-bg-gray);
     /* Fondo gris claro para que resalte el blanco */
 }
@@ -902,13 +902,19 @@ body {
 .highlight-card {
     background-color: var(--bbva-white);
     border-radius: 1rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    
 
-    width: 80.5%;
+    width: 100%;
+    max-width: 1224px;      /* ← ancho exacto del original */
+    min-height: 640px; 
     margin: 0 auto;
 
-    overflow: hidden;
+    overflow: visible;
     padding: 5rem 5.5rem 5rem 1.5rem;
+
+    display: flex;
+    align-items: center;      /* ← centra verticalmente */
+    justify-content: center;  /* ← centra horizontalmente */
 }
 
 /* Estilo base para las 3 columnas */
@@ -943,6 +949,8 @@ body {
     width: 23rem;
     height: auto;
     object-fit: contain;
+    transition: transform 0.15s ease-out;
+    will-change: transform;
 }
 
 /* Separadores internos */
@@ -1035,13 +1043,14 @@ body {
 
 .loan-title {
     font-size: 3rem;
-    line-height: 1.1;
+    line-height: 56px;
     color: var(--bbva-strong-blue);
     margin-bottom: 20px;
 }
 
 .loan-description {
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: 350;
     color: #070e46;
     margin-bottom: 30px;
     line-height: 1.6;
@@ -1053,6 +1062,7 @@ body {
     color: white;
     padding: 16px 40px;
     border-radius: 10px;
+    font-size: 15px;
     font-weight: 700;
     text-decoration: none;
     justify-content: center;
@@ -1072,7 +1082,7 @@ body {
 
 .loan-item h3 {
     font-size: 20px;
-    color: var(--bbva-navy);
+    color: rgb(7,14,70);
     margin-bottom: 8px;
 }
 
@@ -1101,3 +1111,189 @@ body {
         width: 100%;
     }
 }
+
+/* --- BANNER AZUL CELULAR DESPUES DE LA MONEDA --- */
+
+/* ── Banner azul celular ── */
+.promo-alert-section {
+    padding: 1rem 0;
+    background-color: var(--bbva-bg-gray);
+}
+
+.promo-alert-container {
+    width: 100%;
+    max-width: 1224px;
+    min-height: 200px;
+    margin: 0 auto;
+    background-color: var(--bbva-navy);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.promo-alert__icon {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    margin-top: 0px;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo-alert__main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.promo-alert__title {
+    font-family: var(--font-secondary); 
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    color: var(--bbva-white);
+    line-height: 1.2;
+}
+
+.promo-alert__body {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+}
+
+.btn-promo-alert {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bbva-white);
+    color: var(--bbva-navy);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 16px 32px;
+    border-radius: 8px;
+    margin-top: 8px;
+    width: 158px;   /* ← añade esto */
+    height: 56px;   /* ← añade esto */
+    transition: opacity 0.3s;
+    margin-top: 15px; 
+}
+
+.btn-promo-alert:hover {
+    opacity: 0.85;
+}
+
+
+/* --- SECCION DE LAS TRES IMAGENES CON TEXTO --- */
+
+/* ── Sección Con todo lo que te importa ── */
+.cards-section {
+    padding: 3rem 0 4rem;
+    background-color: var(--bbva-bg-gray);
+}
+
+.cards-container {
+    width: 100%;
+    max-width: 1224px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.cards-section__title {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--bbva-core-blue);
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    justify-content: center;  /* ← añade esta línea */
+}
+
+/* Tarjeta individual */
+.info-card {
+    background-color: var(--bbva-white);
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 392px;          /* ← ancho exacto */
+    min-height: 597px;     /* ← alto exacto */
+    padding: 24px;         /* ← padding uniforme en todos los lados */
+}
+
+.info-card__img-wrapper {
+    width: 344px;          /* ← ancho exacto de la imagen */
+    height: 224px;         /* ← alto exacto de la imagen */
+    overflow: hidden;
+    border-radius: 12px;   /* ← borde en TODAS las esquinas */
+    flex-shrink: 0;
+}
+
+.info-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.info-card__body {
+    padding: 1.5rem 0 1rem 0;  /* ← sin padding lateral, la tarjeta ya lo tiene */
+    flex: 1;
+}
+
+.info-card__title {
+    font-size: 32px;
+    color: var(--bbva-core-blue);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.info-card__text {
+    font-size: 15px;
+    line-height: 24px;
+    color: rgb(7,14,70);
+    line-height: 1.6;
+}
+
+.btn-info-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bbva-navy);
+    color: var(--bbva-white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 24px;
+    border-radius: 8px;
+    margin: 0;
+    transition: background-color 0.3s;
+}
+
+.btn-info-card:hover {
+    background-color: var(--bbva-core-blue);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+

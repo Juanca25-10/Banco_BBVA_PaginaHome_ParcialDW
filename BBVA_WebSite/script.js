@@ -90,3 +90,34 @@
     goToSlide(0);
  
 })();
+
+/* ── Parallax moneda: entra desde arriba hacia la tarjeta ── */
+(function() {
+    const coinImg = document.querySelector('.col-image img');
+    const card = document.querySelector('.highlight-card');
+    if (!coinImg || !card) return;
+
+    /* Posición inicial: la moneda empieza 180px más arriba */
+    coinImg.style.transform = 'translateY(-420px) scale(1.3)';
+
+    window.addEventListener('scroll', function() {
+        const cardTop = card.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        /* Calcula cuánto ha entrado la tarjeta en pantalla */
+        const progress = Math.max(0, Math.min(1, 
+            (windowHeight - cardTop) / (windowHeight * 0.8)
+        ));
+
+        /* Interpola desde -420px hasta 0px */
+        const offset = -300 * (1 - progress);
+
+        /* Escala: empieza en 1.3 y termina en 1 */
+        const scale = 1.3 - (0.3 * progress);
+
+        coinImg.style.transform = `translateY(${offset}px) scale(${scale})`;
+    }, { passive: true });
+})();
+
+
+
