@@ -17,20 +17,20 @@
 
 /* --- 2. VARIABLES GLOBALES (ADN BBVA) --- */
 :root {
-    --bbva-core-blue: #072146; 
-    --bbva-navy: #001391;      
-    --bbva-blue: #004481;      
-    --bbva-light-blue: #1973B8; 
+    --bbva-core-blue: #072146;
+    --bbva-navy: #001391;
+    --bbva-blue: #004481;
+    --bbva-light-blue: #1973B8;
     --bbva-strong-blue: #070E46;
-    --bbva-secundary-blue: #0c6dff;   
-    
+    --bbva-secundary-blue: #0c6dff;
+
     --bbva-white: #FFFFFF;
-    --bbva-bg-gray: #f7f8f8;   
-    --bbva-text-dark: #121212; 
-    --bbva-text-gray: #666666; 
-    
+    --bbva-bg-gray: #f7f8f8;
+    --bbva-text-dark: #121212;
+    --bbva-text-gray: #666666;
+
     --font-primary: 'BentonSansBBVA', Arial, sans-serif;
-    --font-secondary: 'TiemposHeadline', serif; 
+    --font-secondary: 'TiemposHeadline', serif;
 }
 
 /* --- 3. RESETEO BÁSICO --- */
@@ -42,7 +42,7 @@
 
 /* Magia del Responsive: 1rem se adaptará a la escala (100%, 125%, etc) */
 html {
-    font-size: 100%; 
+    font-size: 100%;
 }
 
 body {
@@ -60,15 +60,19 @@ body {
 .main-header {
     background-color: var(--bbva-white);
     position: fixed;
-    top: 1.5rem; /* ~24px */
+    top: 1.5rem;
+    /* ~24px */
     left: 50%;
-    transform: translateX(-50%); 
-    width: 97.5%; /* Se ajusta a cualquier pantalla */
-     /* ~1464px Límite máximo */
-    height: 5.5rem; /* ~88px */
-    border-radius: 1rem; /* ~16px */
+    transform: translateX(-50%);
+    width: 97.5%;
+    /* Se ajusta a cualquier pantalla */
+    /* ~1464px Límite máximo */
+    height: 5.5rem;
+    /* ~88px */
+    border-radius: 1rem;
+    /* ~16px */
     box-shadow: 0px 0.3rem 0.6rem rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -77,9 +81,12 @@ body {
 /* Contenedor interno: Centrado automático sin píxeles rígidos */
 .header-inner-content {
     width: 100%;
-    max-width: 78rem; /* ~1224px */
-    margin: 0 auto; /* ¡Esto reemplaza tus 100.4px y arregla el centrado! */
-    padding: 0 1.25rem; /* ~20px */
+    max-width: 78rem;
+    /* ~1224px */
+    margin: 0 auto;
+    /* ¡Esto reemplaza tus 100.4px y arregla el centrado! */
+    padding: 0 1.25rem;
+    /* ~20px */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,23 +96,27 @@ body {
 .header-left {
     display: flex;
     align-items: center;
-    gap: 3.8rem; /* ~40px */
+    gap: 3.8rem;
+    /* ~40px */
 }
 
 .bbva-logo-svg {
-    height: 2.5rem; /* ~40px */
+    height: 2.5rem;
+    /* ~40px */
     width: auto;
 }
 
 .segment-nav {
     display: flex;
-    gap: 3rem; /* ~48px */
+    gap: 3rem;
+    /* ~48px */
 }
 
 .segment-nav a {
     text-decoration: none;
     color: var(--bbva-navy);
-    font-size: 0.9375rem; /* ~15px */
+    font-size: 0.9375rem;
+    /* ~15px */
     font-weight: 800;
     padding-bottom: 0.25rem;
 }
@@ -119,42 +130,54 @@ body {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 1.7rem; /* ~24px */
+    gap: 1.7rem;
+    /* ~24px */
 }
 
 .link-simple {
     color: var(--bbva-strong-blue);
     text-decoration: none;
-    font-size: 0.9375rem; /* ~15px */
-    display: flex;       /* Esto pone el icono y el texto uno al lado del otro */
-    align-items: center; /* Esto los centra verticalmente */
-    gap: 0.5rem;         /* Esto le da una separación de unos 8px entre el icono y la letra */
-    font-weight: 800; /* Negrita para destacar */
-    letter-spacing: 0.04em; /* Espaciado entre letras para mejorar legibilidad */
+    font-size: 0.9375rem;
+    /* ~15px */
+    display: flex;
+    /* Esto pone el icono y el texto uno al lado del otro */
+    align-items: center;
+    /* Esto los centra verticalmente */
+    gap: 0.5rem;
+    /* Esto le da una separación de unos 8px entre el icono y la letra */
+    font-weight: 800;
+    /* Negrita para destacar */
+    letter-spacing: 0.04em;
+    /* Espaciado entre letras para mejorar legibilidad */
 }
 
 .btn-client {
     background-color: var(--bbva-secundary-blue);
     color: var(--bbva-white);
     text-decoration: none;
-    padding: 1rem 2rem; /* ~16px 32px */
+    padding: 1rem 2rem;
+    /* ~16px 32px */
     font-weight: bold;
-    font-size: 0.9375rem; /* ~15px */
+    font-size: 0.9375rem;
+    /* ~15px */
     transition: background 0.3s;
-    border-radius: 0.5rem; /* ~8px */
+    border-radius: 0.5rem;
+    /* ~8px */
 }
 
 /* BOTÓN ACCESO */
 .btn-access {
-    background-color: var(--bbva-bg-gray); 
+    background-color: var(--bbva-bg-gray);
     color: var(--bbva-navy);
-    padding: 1rem 2.2rem; 
-    border-radius: 2px; 
+    padding: 1rem 2.2rem;
+    border-radius: 2px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.9375rem; /* ~15px */
+    font-size: 0.9375rem;
+    /* ~15px */
     transition: background 0.3s;
-    border-radius: 0.5rem; /* ~8px */
+    border-radius: 0.5rem;
+    /* ~8px */
     letter-spacing: 0.055rem;
 }
 
@@ -167,32 +190,38 @@ body {
 .header-icons {
     display: flex;
     align-items: center;
-    gap: 0.7rem; /* Separación entre lupa y menú */
+    gap: 0.7rem;
+    /* Separación entre lupa y menú */
 }
 
 /* Estilo para los botones (Lupa y Menú) */
-.icon-btn, .menu-btn {
+.icon-btn,
+.menu-btn {
     background: transparent;
     border: none;
     padding: 0;
     display: flex;
     align-items: center;
     cursor: pointer;
-    color: var(--bbva-strong-blue); /* El color #070E46 que definiste */
+    color: var(--bbva-strong-blue);
+    /* El color #070E46 que definiste */
     font-family: var(--font-primary);
     outline: none;
 }
 
 /* Ajustes específicos para el texto "Menú" */
 .menu-btn {
-    gap: 8px; /* Espacio entre la palabra Menú y las rayitas */
+    gap: 8px;
+    /* Espacio entre la palabra Menú y las rayitas */
     font-size: 15px;
-    font-weight: 700; /* Más negrilla como el original */
+    font-weight: 700;
+    /* Más negrilla como el original */
 }
 
 /* Para que los SVG siempre usen el color del botón */
 .header-icons svg {
-    fill: currentColor; /* Esto hace que el icono tome el color del texto (azul fuerte) */
+    fill: currentColor;
+    /* Esto hace que el icono tome el color del texto (azul fuerte) */
 }
 
 /* Si el icono de hamburguesa usa líneas (stroke) en lugar de relleno (fill) */
@@ -201,7 +230,8 @@ body {
 }
 
 .header-icon-img {
-    width: 1.6rem;  /* ~20px - Ajusta este valor si el icono se ve muy grande o pequeño */
+    width: 1.6rem;
+    /* ~20px - Ajusta este valor si el icono se ve muy grande o pequeño */
     height: 1.8rem;
     display: block;
 }
@@ -212,16 +242,20 @@ body {
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.625rem; /* ~10px */
+    gap: 0.625rem;
+    /* ~10px */
     color: var(--bbva-blue);
     font-weight: bold;
-    font-size: 0.9375rem; /* ~15px */
+    font-size: 0.9375rem;
+    /* ~15px */
 }
 
 /* --- ESTADO SCROLLED (CUANDO BAJAS) --- */
 .main-header.header-scrolled {
-    height: 4.5rem; /* ~72px */
-    top: 0.75rem; /* ~12px */
+    height: 4.5rem;
+    /* ~72px */
+    top: 0.75rem;
+    /* ~12px */
     box-shadow: 0px 0.5rem 1.5rem rgba(0, 0, 0, 0.12);
 }
 
@@ -231,13 +265,15 @@ body {
 
 .hero-carousel {
     width: 100%;
-    margin-top: 8.5rem; /* ~136px */
+    margin-top: 8.5rem;
+    /* ~136px */
 }
 
 .carousel-viewport {
     width: 100%;
     overflow: hidden;
-    border-radius: 1rem; /* ~16px */
+    border-radius: 1rem;
+    /* ~16px */
 }
 
 .carousel-track {
@@ -249,12 +285,14 @@ body {
 .carousel-slide {
     flex: 0 0 100%;
     width: 100%;
-    min-height: 30rem; /* ~480px */
+    min-height: 30rem;
+    /* ~480px */
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
-    border-radius: 1rem; /* ~16px */
+    border-radius: 1rem;
+    /* ~16px */
 }
 
 /* VARIANTE: Slides de fondo oscuro */
@@ -263,53 +301,73 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     align-items: flex-start;
-    padding: 5rem 15.5%; 
-    min-height: 0; 
+    padding: 5rem 15.5%;
+    min-height: 0;
 }
 
 /* --- MEDIA QUERIES (Para pantallas pequeñas o zoom exagerado) --- */
 @media (max-width: 1024px) {
-    .header-left { gap: 1.5rem; }
-    .header-right { gap: 1rem; }
-    .slide-type-hero { padding: 4rem 5%; }
+    .header-left {
+        gap: 1.5rem;
+    }
+
+    .header-right {
+        gap: 1rem;
+    }
+
+    .slide-type-hero {
+        padding: 4rem 5%;
+    }
 }
 
 @media (max-width: 768px) {
-    .segment-nav { display: none; } /* Ocultar en tablets pequeñas */
-    .link-simple, .btn-client { display: none; }
-    .btn-access { padding: 0.5rem 1rem; }
+    .segment-nav {
+        display: none;
+    }
+
+    /* Ocultar en tablets pequeñas */
+    .link-simple,
+    .btn-client {
+        display: none;
+    }
+
+    .btn-access {
+        padding: 0.5rem 1rem;
+    }
 }
 
 /* =========================================================
    CARRUSEL HERO BBVA
    Desarrollado por: [Tu nombre]
    ========================================================= */
- 
+
 /* --- Sección principal del carrusel --- */
 /* DESPUÉS */
 .hero-carousel {
     width: 100%;
-    max-width: 97.5%;   /* ← elimina esta línea */
-    margin: 0 auto;      /* ← elimina esta línea */
+    max-width: 97.5%;
+    /* ← elimina esta línea */
+    margin: 0 auto;
+    /* ← elimina esta línea */
     margin-top: 136px;
-    
-    
+
+
 }
- 
+
 /* --- Ventana de visualización (oculta lo que se sale) --- */
 .carousel-viewport {
     width: 100%;
     overflow: hidden;
     border-radius: 16px;
 }
- 
+
 /* --- Pista que contiene todos los slides en fila --- */
 .carousel-track {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
 }
- 
+
 /* --- Slide base: cada diapositiva ocupa el 100% del viewport --- */
 .carousel-slide {
     flex: 0 0 100%;
@@ -321,19 +379,19 @@ body {
     align-items: center;
     border-radius: 16px;
 }
- 
+
 /* =========================================================
    VARIANTE 1: Slides de fondo oscuro (Slide 1 y 2)
    ========================================================= */
- 
+
 .slide-type-hero {
     background-image: url('https://www.bbva.com.co/content/dam/public-web/colombia/images/rcp/incentivos-bbva-gana-ahorrando-02.im1775601124912im.jpg?imwidth=2400');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
+
 }
- 
+
 /* Slide 1 – Fondo oscuro con cortina azul
    Cuando tengas la imagen real reemplaza este gradiente por:
    background-image: url('./tu-imagen-slide1.jpg');
@@ -344,7 +402,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
- 
+
 /* Slide 2 – Mercado de flores
    Cuando tengas la imagen real reemplaza este gradiente por:
    background-image: url('./tu-imagen-slide2.jpg');
@@ -356,17 +414,23 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
- 
+
 /* Tarjeta flotante blanca (slides oscuros) */
 .hero-card {
     background: var(--bbva-white);
-    border-radius: 16px;        /* ← el original usa 16px, no 18px */
-    padding: 24px;              /* ← 24px en todos los lados */
-    width: 560px;               /* ← ancho exacto del original */
-    max-width: 560px;           /* ← mismo valor */
-    min-height: 320px;          /* ← alto exacto del original */
-    margin-top: 80px;    /* ← sube el valor para bajarlo más */
-    margin-left: 30px; 
+    border-radius: 16px;
+    /* ← el original usa 16px, no 18px */
+    padding: 24px;
+    /* ← 24px en todos los lados */
+    width: 560px;
+    /* ← ancho exacto del original */
+    max-width: 560px;
+    /* ← mismo valor */
+    min-height: 320px;
+    /* ← alto exacto del original */
+    margin-top: 80px;
+    /* ← sube el valor para bajarlo más */
+    margin-left: 30px;
     position: relative;
     z-index: 2;
     flex-shrink: 0;
@@ -384,55 +448,61 @@ body {
     width: 560px;
     max-width: 560px;
     min-height: 228px;
-    margin-top: 40px;    /* ← más arriba que slide 1 */
-    margin-left: 30px;   /* ← mismo margen izquierdo */
+    margin-top: 40px;
+    /* ← más arriba que slide 1 */
+    margin-left: 30px;
+    /* ← mismo margen izquierdo */
 }
 
 .hero-card--slide2 .hero-card__title {
-    margin-bottom: 20px;  /* ← espacio entre título y párrafo */
+    margin-bottom: 20px;
+    /* ← espacio entre título y párrafo */
 }
 
 .hero-card--slide2 .hero-card__actions {
-    margin-top: 30px;     /* ← espacio entre párrafo y botón */
+    margin-top: 30px;
+    /* ← espacio entre párrafo y botón */
 }
+
 .hero-card--slide2 .hero-card__tagline {
-    margin-top: 20px;  /* ← espacio arriba del texto BBVA 30 AÑOS */
+    margin-top: 20px;
+    /* ← espacio arriba del texto BBVA 30 AÑOS */
 }
 
 
- 
+
 .hero-card__title {
     font-size: 40px;
-    font-weight: 700;     
+    font-weight: 700;
     line-height: 48px;
     color: var(--bbva-core-blue);
     line-height: 1.25;
     margin-bottom: 20px;
 }
 
- 
+
 .hero-card__body {
     font-size: 15px;
-    font-weight: 500; 
+    font-weight: 500;
     color: #070e46;
     line-height: 1.6;
     margin-bottom: 8px;
 }
- 
+
 .hero-card__body strong {
     font-weight: 700;
 }
- 
+
 .hero-card__tagline {
     font-size: 14px;
     color: var(--bbva-text-dark);
     margin-bottom: 24px;
 }
- 
+
 .hero-card__actions {
     margin-top: 20px;
 }
- 
+
 /* ── Elemento decorativo Slide 1: Cheque gigante ──
    Reemplaza todo el bloque .slide1-image-placeholder por:
    <img src="./tu-foto-persona.png" alt="Persona sosteniendo cheque de $120 millones" class="slide1-person-img">
@@ -448,15 +518,15 @@ body {
     justify-content: center;
     z-index: 1;
 }
- 
+
 .fake-cheque {
     background: var(--bbva-white);
     border-radius: 4px;
     padding: 20px 40px;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
- 
+
 .fake-cheque__label {
     font-size: 11px;
     letter-spacing: 2px;
@@ -464,7 +534,7 @@ body {
     color: var(--bbva-text-gray);
     margin-bottom: 4px;
 }
- 
+
 .fake-cheque__amount {
     font-size: 48px;
     font-weight: 900;
@@ -472,13 +542,13 @@ body {
     line-height: 1;
     margin-bottom: 8px;
 }
- 
+
 .fake-cheque__brand {
     font-size: 18px;
     font-weight: 700;
     color: var(--bbva-navy);
 }
- 
+
 /* ── Badge Coljuegos (esquina inferior derecha) ── */
 .coljuegos-badge {
     position: absolute;
@@ -491,20 +561,20 @@ body {
     flex-direction: column;
     align-items: center;
     z-index: 3;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
- 
+
 .coljuegos-badge__label {
     font-size: 10px;
     color: var(--bbva-text-gray);
 }
- 
+
 .coljuegos-badge__brand {
     font-size: 16px;
     font-weight: 800;
     color: var(--bbva-text-dark);
 }
- 
+
 .coljuegos-badge__o {
     display: inline-block;
     width: 14px;
@@ -518,12 +588,12 @@ body {
     position: relative;
     top: -1px;
 }
- 
- 
+
+
 /* =========================================================
    VARIANTE 2: Slides de fondo claro – layout dividido (Slides 3 y 4)
    ========================================================= */
- 
+
 .slide-type-split {
     background-color: var(--bbva-bg-gray);
     padding: 64px 35% 64px 15%;
@@ -533,20 +603,20 @@ body {
     gap: 48px;
     min-height: 520px;
 }
- 
+
 /* Columna izquierda: texto */
 .slide-split__content {
     flex: 0 0 auto;
     max-width: 600px;
 }
- 
+
 .slide-split__badge {
     font-size: 15px;
     font-style: italic;
     color: #070e46;
     margin-bottom: 16px;
 }
- 
+
 .slide-split__title {
     font-size: 48px;
     font-weight: 350;
@@ -554,21 +624,21 @@ body {
     line-height: 1.2;
     margin-bottom: 16px;
 }
- 
+
 .slide-split__body {
     font-size: 15px;
-    color: rgba(7,14,70);
+    color: rgba(7, 14, 70);
     line-height: 1.6;
     margin-bottom: 32px;
 }
- 
+
 .slide-split__actions {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
     align-items: center;
 }
- 
+
 /* Columna derecha: imagen
    IMPORTANTE: cuando tengas la imagen real, reemplaza el div '.slide-split__img'
    por un elemento <img> con la clase 'slide-split__img' así:
@@ -581,35 +651,36 @@ body {
     height: 409px;
     border-radius: 16px;
     overflow: hidden;
-    object-fit: cover; /* Listo para cuando sea un <img> real */
+    object-fit: cover;
+    /* Listo para cuando sea un <img> real */
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 13px;
-    color: rgba(0,0,0,0.35);
+    color: rgba(0, 0, 0, 0.35);
     font-style: italic;
 }
- 
+
 /* Placeholder visual Slide 3 – Familia en playa */
 .slide-img-family {
     background: linear-gradient(135deg, #c9d6df 0%, #e2ebf0 50%, #b8cdd9 100%);
 }
- 
+
 /* Placeholder visual Slide 4 – Tarjeta Colombia Vive */
 .slide-img-card {
     background: linear-gradient(135deg, #1a2a1a 0%, #2d4a2a 40%, #4a7a3d 70%, #3d6b2a 100%);
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
- 
+
 .img-placeholder-label {
     pointer-events: none;
     user-select: none;
 }
- 
+
 /* =========================================================
    BOTONES DEL CARRUSEL
    ========================================================= */
- 
+
 /* Botón primario (relleno azul) */
 .btn-carousel-primary {
     display: inline-flex;
@@ -632,13 +703,13 @@ body {
     background-color: rgb(12, 109, 255);
     border: none;
 }
- 
+
 .btn-carousel-primary:hover {
     background-color: var(--bbva-core-blue);
 }
 
 
- 
+
 /* Botón secundario (borde, sin fondo) */
 .btn-carousel-secondary {
     display: inline-flex;
@@ -656,16 +727,16 @@ body {
 }
 
 
- 
+
 .btn-carousel-secondary:hover {
     background-color: var(--bbva-navy);
     color: var(--bbva-white);
 }
- 
+
 /* =========================================================
    CONTROLES DE NAVEGACIÓN (flechas y contador)
    ========================================================= */
- 
+
 .carousel-controls {
     display: flex;
     align-items: center;
@@ -673,7 +744,7 @@ body {
     gap: 1.2rem;
     margin-top: 20px;
 }
- 
+
 .carousel-btn {
     width: 36px;
     height: 36px;
@@ -687,28 +758,346 @@ body {
     justify-content: center;
     transition: color 0.2s, background-color 0.2s;
 }
- 
+
 .carousel-btn:hover {
     color: var(--bbva-navy);
     background-color: rgba(0, 19, 145, 0.08);
 }
- 
+
 .carousel-btn:disabled {
     opacity: 0.3;
     cursor: default;
     pointer-events: none;
 }
- 
+
 .carousel-counter {
     font-size: 0.9rem;
     font-style: italic;
-    font-weight: 400;      /* ← añade esto */
+    font-weight: 400;
+    /* ← añade esto */
     background-color: var(--bbva-white);
     padding: 0.3rem 0.9rem;
     border-radius: 1rem;
-    color: #070e46; 
+    color: #070e46;
     min-width: 48px;
     text-align: center;
     user-select: none;
 }
 
+/* =========================================================
+   SECCIÓN DE ACCIONES RÁPIDAS (Cuadritos Blancos)
+   ========================================================= */
+
+.quick-actions-grid {
+    width: 100%;
+    margin-top: 2rem;
+    /* Separación respecto al carrusel */
+    padding-bottom: 3rem;
+}
+
+.quick-actions-container {
+    width: 100%;
+    max-width: 76.5rem;
+    /* El mismo ancho del header para que todo quede alineado */
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    display: grid;
+    /* La magia: crea 6 columnas iguales para que los 6 quepan perfecto en PC */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+}
+
+/* Diseño individual de cada cuadradito */
+.action-card {
+    background-color: var(--bbva-white);
+    border-radius: 1rem;
+    /* El borde que me pediste */
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Alinea el contenido al centro */
+    justify-content: center;
+    /* Centra verticalmente el contenido */
+    text-decoration: none;
+    min-height: 9rem;
+    /* Garantiza que todas tengan el mismo alto */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: none;
+    /* Cero sombra por defecto */
+}
+
+/* Efecto al pasar el ratón (Hover) */
+.action-card:hover {
+    background-color: #f0f4f8;
+    /* Se vuelve un gris-azulado muy leve */
+    transform: translateY(-4px);
+    /* Se levanta un poquitito */
+}
+
+.action-icon {
+    width: 2.5rem;
+    /* ~40px para que el icono se vea bien claro */
+    height: 2.5rem;
+    margin-bottom: 1.5rem;
+    /* Empuja el texto hacia abajo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.action-text {
+    color: var(--bbva-navy);
+    font-size: 0.9375rem;
+    /* ~15px */
+    font-weight: 700;
+    line-height: 1.3;
+    /* Hace que el texto en 2 líneas se vea bien separadito */
+    text-align: center;
+    /* Asegura que el texto esté centrado horizontalmente */
+}
+
+/* --- MEDIA QUERIES PARA LOS CUADRITOS (Responsive) --- */
+@media (max-width: 1024px) {
+    .quick-actions-container {
+        /* En pantallas medianas, lo pasamos a 3 columnas (2 filas de 3) */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .quick-actions-container {
+        /* En celulares, lo pasamos a 2 columnas (3 filas de 2) */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================================================
+   SECCIÓN PROMO: CON MUCHO MÁS DE LO QUE IMAGINAS
+   ========================================================= */
+
+.promo-highlight-section {
+    padding: 1.2rem 0 100px;
+    background-color: var(--bbva-bg-gray);
+    /* Fondo gris claro para que resalte el blanco */
+}
+
+/* El título y su margen inferior (el espacio vacío) */
+.main-promo-title {
+    font-size: 48px;
+    color: var(--bbva-core-blue);
+    margin-bottom: 18rem;
+    /* Espacio vacío grandecito */
+    text-align: center;
+}
+
+/* El rectángulo blanco principal */
+.highlight-card {
+    background-color: var(--bbva-white);
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+
+    width: 80.5%;
+    margin: 0 auto;
+
+    overflow: hidden;
+    padding: 5rem 5.5rem 5rem 1.5rem;
+}
+
+/* Estilo base para las 3 columnas */
+.highlight-col {
+    flex: 1;
+    /* Esto hace que las 3 midan lo mismo */
+    width: 25.5rem;
+    /* Cada columna ocupa un tercio del ancho del contenedor */
+    height: 40rem;
+    /* Esto asegura que las columnas tengan la misma altura, incluso si el contenido es diferente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.highlight-col:last-child {
+    border-right: none;
+    /* Quita la línea a la última columna */
+}
+
+/* Ajustes específicos por columna */
+/* --- IMAGEN IZQUIERDA --- */
+.col-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.col-image img {
+    width: 23rem;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Separadores internos */
+.highlight-separator {
+    width: 100%;
+    height: 1px;
+    background-color: #DDE3EA; /* El gris suave de BBVA */
+    margin-bottom: 2rem;
+}
+
+/* Responsive: Colapsar a una columna en móviles */
+@media (max-width: 1024px) {
+    .highlight-card {
+        width: 90%;
+        /* En tablets/móviles ocupa más ancho */
+        flex-direction: column;
+    }
+
+    .highlight-col {
+        border-right: none;
+        border-bottom: 1px solid #f0f0f0;
+    }
+}
+
+/* --- Estilos para el texto de la columna --- */
+
+.highlight-subtitle {
+    font-size: 3rem; /* Un poco más grande para destacar como título de préstamo */
+    color: var(--bbva-strong-blue);
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.highlight-description {
+    font-size: 0.92rem; /* Texto legible */
+    color: var(--bbva-strong-blue);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+
+/* Estilo del botón "Solicitar Préstamo" */
+.btn-highlight {
+    display: flex;
+    background-color: var(--bbva-navy);
+    color: white;
+    padding: 1rem 2rem ;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-highlight:hover {
+    background-color: var(--bbva-core-blue);
+}
+
+/* =========================================================
+    TERCERA COLUMNA PARTE PROMOOO
+   ========================================================= */
+
+   /* =========================================================
+   BLOQUE PRÉSTAMO (NUEVA SECCIÓN)
+   ========================================================= */
+
+.loan-highlight {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* --- IZQUIERDA --- */
+.loan-left {
+    max-width: 23rem;
+}
+
+.loan-left-group {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+    flex: 1;
+    padding: 0rem 1.5rem 0rem 0rem;
+}
+
+.loan-title {
+    font-size: 3rem;
+    line-height: 1.1;
+    color: var(--bbva-strong-blue);
+    margin-bottom: 20px;
+}
+
+.loan-description {
+    font-size: 16px;
+    color: #070e46;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.loan-btn {
+    display: flex;
+    background-color: var(--bbva-navy);
+    color: white;
+    padding: 16px 40px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.loan-btn:hover {
+    background-color: var(--bbva-core-blue);
+}
+
+/* --- DERECHA --- */
+.loan-right {
+    max-width: 50rem;
+    border-left: 1px solid #dcdcdc;
+    padding-left: 1.5rem;
+}
+
+.loan-item h3 {
+    font-size: 20px;
+    color: var(--bbva-navy);
+    margin-bottom: 8px;
+}
+
+.loan-item p {
+    font-size: 15px;
+    color: #555;
+}
+
+.loan-divider {
+    height: 1px;
+    background-color: #dcdcdc;
+    margin: 24px 0;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .loan-highlight {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 3rem 5%;
+    }
+
+    .loan-right {
+        border-left: none;
+        padding-left: 0;
+        width: 100%;
+    }
+}
