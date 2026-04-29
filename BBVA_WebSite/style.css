@@ -63,11 +63,11 @@ body {
     top: 1.5rem; /* ~24px */
     left: 50%;
     transform: translateX(-50%); 
-    width: 95%; /* Se ajusta a cualquier pantalla */
-    max-width: 91.5rem; /* ~1464px Límite máximo */
+    width: 97.5%; /* Se ajusta a cualquier pantalla */
+     /* ~1464px Límite máximo */
     height: 5.5rem; /* ~88px */
     border-radius: 1rem; /* ~16px */
-    box-shadow: 0px 0.25rem 1rem rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 0.3rem 0.6rem rgba(0, 0, 0, 0.05);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
     z-index: 1000;
     display: flex;
@@ -125,9 +125,12 @@ body {
 .link-simple {
     color: var(--bbva-strong-blue);
     text-decoration: none;
-    font-size: 0.875rem; /* ~14px */
-    font-weight: 800;
-    letter-spacing: 0.04em;
+    font-size: 0.9375rem; /* ~15px */
+    display: flex;       /* Esto pone el icono y el texto uno al lado del otro */
+    align-items: center; /* Esto los centra verticalmente */
+    gap: 0.5rem;         /* Esto le da una separación de unos 8px entre el icono y la letra */
+    font-weight: 800; /* Negrita para destacar */
+    letter-spacing: 0.04em; /* Espaciado entre letras para mejorar legibilidad */
 }
 
 .btn-client {
@@ -163,6 +166,12 @@ body {
     display: flex;
     align-items: center;
     gap: 1.25rem; /* ~20px */
+}
+
+.header-icon-img {
+    width: 1.6rem;  /* ~20px - Ajusta este valor si el icono se ve muy grande o pequeño */
+    height: 1.8rem;
+    display: block;
 }
 
 .menu-btn {
@@ -249,7 +258,7 @@ body {
 /* DESPUÉS */
 .hero-carousel {
     width: 100%;
-    max-width: 98%;   /* ← elimina esta línea */
+    max-width: 97.5%;   /* ← elimina esta línea */
     margin: 0 auto;      /* ← elimina esta línea */
     margin-top: 136px;
     
