@@ -263,9 +263,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     align-items: flex-start;
-    /* Cambio clave: En lugar de 450px fijos que rompen monitores, usamos 10% */
-    padding: 4rem 10%; 
-    min-height: 41.875rem; /* ~670px */
+    padding: 5rem 15.5%; 
+    min-height: 0; 
 }
 
 /* --- MEDIA QUERIES (Para pantallas pequeñas o zoom exagerado) --- */
@@ -315,7 +314,7 @@ body {
 .carousel-slide {
     flex: 0 0 100%;
     width: 100%;
-    min-height: 480px;
+    min-height: 585px;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -328,12 +327,11 @@ body {
    ========================================================= */
  
 .slide-type-hero {
+    background-image: url('https://www.bbva.com.co/content/dam/public-web/colombia/images/rcp/incentivos-bbva-gana-ahorrando-02.im1775601124912im.jpg?imwidth=2400');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    align-items: flex-start; 
-    padding: 64px 450px;
-    min-height: 670px;
+    
 }
  
 /* Slide 1 – Fondo oscuro con cortina azul
@@ -362,29 +360,60 @@ body {
 /* Tarjeta flotante blanca (slides oscuros) */
 .hero-card {
     background: var(--bbva-white);
-    border-radius: 18px;
-    padding: 24px 24px;
-    max-width: 660px;
-    margin-top: 120px;
-    min-height: 370px; 
+    border-radius: 16px;        /* ← el original usa 16px, no 18px */
+    padding: 24px;              /* ← 24px en todos los lados */
+    width: 560px;               /* ← ancho exacto del original */
+    max-width: 560px;           /* ← mismo valor */
+    min-height: 320px;          /* ← alto exacto del original */
+    margin-top: 80px;    /* ← sube el valor para bajarlo más */
+    margin-left: 30px; 
     position: relative;
     z-index: 2;
     flex-shrink: 0;
 }
+
+.hero-card--slide1 {
+    width: 560px;
+    max-width: 560px;
+    min-height: 320px;
+    margin-top: 80px;
+    margin-left: 30px;
+}
+
+.hero-card--slide2 {
+    width: 560px;
+    max-width: 560px;
+    min-height: 228px;
+    margin-top: 40px;    /* ← más arriba que slide 1 */
+    margin-left: 30px;   /* ← mismo margen izquierdo */
+}
+
+.hero-card--slide2 .hero-card__title {
+    margin-bottom: 20px;  /* ← espacio entre título y párrafo */
+}
+
+.hero-card--slide2 .hero-card__actions {
+    margin-top: 30px;     /* ← espacio entre párrafo y botón */
+}
+.hero-card--slide2 .hero-card__tagline {
+    margin-top: 20px;  /* ← espacio arriba del texto BBVA 30 AÑOS */
+}
+
+
  
 .hero-card__title {
-    font-size: 45px;
+    font-size: 40px;
     font-weight: 700;     
     line-height: 48px;
     color: var(--bbva-core-blue);
     line-height: 1.25;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
  
 .hero-card__body {
-    font-size: 17px;
-    font-weight: 300; 
+    font-size: 15px;
+    font-weight: 500; 
     color: #070e46;
     line-height: 1.6;
     margin-bottom: 8px;
@@ -401,7 +430,7 @@ body {
 }
  
 .hero-card__actions {
-    margin-top: 25px;
+    margin-top: 20px;
 }
  
 /* ── Elemento decorativo Slide 1: Cheque gigante ──
@@ -497,7 +526,7 @@ body {
  
 .slide-type-split {
     background-color: var(--bbva-bg-gray);
-    padding: 64px 350px;
+    padding: 64px 35% 64px 15%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -508,26 +537,27 @@ body {
 /* Columna izquierda: texto */
 .slide-split__content {
     flex: 0 0 auto;
-    max-width: 480px;
+    max-width: 600px;
 }
  
 .slide-split__badge {
-    font-size: 13px;
+    font-size: 15px;
     font-style: italic;
-    color: var(--bbva-text-gray);
+    color: #070e46;
     margin-bottom: 16px;
 }
  
 .slide-split__title {
-    font-size: 36px;
+    font-size: 48px;
+    font-weight: 350;
     color: var(--bbva-navy);
     line-height: 1.2;
     margin-bottom: 16px;
 }
  
 .slide-split__body {
-    font-size: 14px;
-    color: var(--bbva-text-dark);
+    font-size: 15px;
+    color: rgba(7,14,70);
     line-height: 1.6;
     margin-bottom: 32px;
 }
@@ -585,21 +615,29 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--bbva-navy);
+    background-color: #001391;
     color: var(--bbva-white);
     text-decoration: none;
     font-family: var(--font-primary);
     font-weight: 700;
-    font-size: 17px;
-    padding: 20px 36px;
+    font-size: 15px;
+    padding: 16px 36px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
     white-space: nowrap;
+}
+
+/* Solo afecta al slide número 3 */
+.carousel-slide:nth-child(3).slide-type-split .slide-split__actions .btn-carousel-primary {
+    background-color: rgb(12, 109, 255);
+    border: none;
 }
  
 .btn-carousel-primary:hover {
     background-color: var(--bbva-core-blue);
 }
+
+
  
 /* Botón secundario (borde, sin fondo) */
 .btn-carousel-secondary {
@@ -613,11 +651,11 @@ body {
     font-weight: 700;
     font-size: 15px;
     padding: 12px 24px;
-    border-radius: 4px;
-    border: 2px solid var(--bbva-navy);
     transition: all 0.3s ease;
     white-space: nowrap;
 }
+
+
  
 .btn-carousel-secondary:hover {
     background-color: var(--bbva-navy);
@@ -673,3 +711,4 @@ body {
     text-align: center;
     user-select: none;
 }
+
