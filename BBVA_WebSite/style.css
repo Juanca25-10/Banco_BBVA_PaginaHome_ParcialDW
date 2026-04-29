@@ -632,7 +632,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 32px;
+    gap: 1.2rem;
     margin-top: 20px;
 }
  
@@ -662,7 +662,7 @@ body {
 }
  
 .carousel-counter {
-    font-size: 17px;
+    font-size: 0.9rem;
     font-style: italic;
     font-weight: 400;      /* ← añade esto */
     background-color: var(--bbva-white);
