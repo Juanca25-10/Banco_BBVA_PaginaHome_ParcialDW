@@ -321,7 +321,10 @@ body {
    y añade un overlay oscuro encima del texto
 */
 .slide-bg-2 {
-    background: linear-gradient(135deg, #2c4a1e 0%, #3d6b2a 35%, #5a8b40 65%, #7aad55 100%);
+    background-image: url('https://www.bbva.com.co/content/dam/public-web/colombia/images/rcp/aniversario-30-bbva-en-colombia-01.im1775601279693im.jpg?imwidth=2400');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
  
 /* Tarjeta flotante blanca (slides oscuros) */
@@ -462,7 +465,7 @@ body {
  
 .slide-type-split {
     background-color: var(--bbva-bg-gray);
-    padding: 64px 80px;
+    padding: 64px 350px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -512,8 +515,8 @@ body {
 */
 .slide-split__img {
     flex: 0 0 auto;
-    width: 480px;
-    height: 370px;
+    width: 600px;
+    height: 409px;
     border-radius: 16px;
     overflow: hidden;
     object-fit: cover; /* Listo para cuando sea un <img> real */
