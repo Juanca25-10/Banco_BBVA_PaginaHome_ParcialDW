@@ -902,19 +902,22 @@ body {
 .highlight-card {
     background-color: var(--bbva-white);
     border-radius: 1rem;
-    
+
 
     width: 100%;
-    max-width: 1224px;      /* ← ancho exacto del original */
-    min-height: 640px; 
+    max-width: 1224px;
+    /* ← ancho exacto del original */
+    min-height: 640px;
     margin: 0 auto;
 
     overflow: visible;
     padding: 5rem 5.5rem 5rem 1.5rem;
 
     display: flex;
-    align-items: center;      /* ← centra verticalmente */
-    justify-content: center;  /* ← centra horizontalmente */
+    align-items: center;
+    /* ← centra verticalmente */
+    justify-content: center;
+    /* ← centra horizontalmente */
 }
 
 /* Estilo base para las 3 columnas */
@@ -957,7 +960,8 @@ body {
 .highlight-separator {
     width: 100%;
     height: 1px;
-    background-color: #DDE3EA; /* El gris suave de BBVA */
+    background-color: #DDE3EA;
+    /* El gris suave de BBVA */
     margin-bottom: 2rem;
 }
 
@@ -978,7 +982,8 @@ body {
 /* --- Estilos para el texto de la columna --- */
 
 .highlight-subtitle {
-    font-size: 3rem; /* Un poco más grande para destacar como título de préstamo */
+    font-size: 3rem;
+    /* Un poco más grande para destacar como título de préstamo */
     color: var(--bbva-strong-blue);
     font-family: var(--font-secondary);
     font-weight: 500;
@@ -987,7 +992,8 @@ body {
 }
 
 .highlight-description {
-    font-size: 0.92rem; /* Texto legible */
+    font-size: 0.92rem;
+    /* Texto legible */
     color: var(--bbva-strong-blue);
     line-height: 1.5;
     margin-bottom: 2rem;
@@ -999,7 +1005,7 @@ body {
     display: flex;
     background-color: var(--bbva-navy);
     color: white;
-    padding: 1rem 2rem ;
+    padding: 1rem 2rem;
     border-radius: 0.5rem;
     text-decoration: none;
     align-items: center;
@@ -1017,7 +1023,7 @@ body {
     TERCERA COLUMNA PARTE PROMOOO
    ========================================================= */
 
-   /* =========================================================
+/* =========================================================
    BLOQUE PRÉSTAMO (NUEVA SECCIÓN)
    ========================================================= */
 
@@ -1082,7 +1088,7 @@ body {
 
 .loan-item h3 {
     font-size: 20px;
-    color: rgb(7,14,70);
+    color: rgb(7, 14, 70);
     margin-bottom: 8px;
 }
 
@@ -1150,7 +1156,7 @@ body {
 }
 
 .promo-alert__title {
-    font-family: var(--font-secondary); 
+    font-family: var(--font-secondary);
     font-size: 32px;
     font-weight: 700;
     line-height: 40px;
@@ -1176,10 +1182,12 @@ body {
     padding: 16px 32px;
     border-radius: 8px;
     margin-top: 8px;
-    width: 158px;   /* ← añade esto */
-    height: 56px;   /* ← añade esto */
+    width: 158px;
+    /* ← añade esto */
+    height: 56px;
+    /* ← añade esto */
     transition: opacity 0.3s;
-    margin-top: 15px; 
+    margin-top: 15px;
 }
 
 .btn-promo-alert:hover {
@@ -1214,7 +1222,8 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    justify-content: center;  /* ← añade esta línea */
+    justify-content: center;
+    /* ← añade esta línea */
 }
 
 /* Tarjeta individual */
@@ -1224,16 +1233,22 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    width: 392px;          /* ← ancho exacto */
-    min-height: 597px;     /* ← alto exacto */
-    padding: 24px;         /* ← padding uniforme en todos los lados */
+    width: 392px;
+    /* ← ancho exacto */
+    min-height: 597px;
+    /* ← alto exacto */
+    padding: 24px;
+    /* ← padding uniforme en todos los lados */
 }
 
 .info-card__img-wrapper {
-    width: 344px;          /* ← ancho exacto de la imagen */
-    height: 224px;         /* ← alto exacto de la imagen */
+    width: 344px;
+    /* ← ancho exacto de la imagen */
+    height: 224px;
+    /* ← alto exacto de la imagen */
     overflow: hidden;
-    border-radius: 12px;   /* ← borde en TODAS las esquinas */
+    border-radius: 12px;
+    /* ← borde en TODAS las esquinas */
     flex-shrink: 0;
 }
 
@@ -1246,7 +1261,8 @@ body {
 
 
 .info-card__body {
-    padding: 1.5rem 0 1rem 0;  /* ← sin padding lateral, la tarjeta ya lo tiene */
+    padding: 1.5rem 0 1rem 0;
+    /* ← sin padding lateral, la tarjeta ya lo tiene */
     flex: 1;
 }
 
@@ -1260,7 +1276,7 @@ body {
 .info-card__text {
     font-size: 15px;
     line-height: 24px;
-    color: rgb(7,14,70);
+    color: rgb(7, 14, 70);
     line-height: 1.6;
 }
 
@@ -1321,8 +1337,10 @@ body {
 /* Grid principal: 2 columnas */
 .solidez-grid {
     display: grid;
-    grid-template-columns: 600px 600px;  /* ← ancho fijo exacto por columna */
-    gap: 24px;                           /* ← gap exacto en px */
+    grid-template-columns: 600px 600px;
+    /* ← ancho fijo exacto por columna */
+    gap: 24px;
+    /* ← gap exacto en px */
     align-items: stretch;
     justify-content: center;
 }
@@ -1340,7 +1358,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 24px; 
+    padding: 24px;
 }
 
 .solidez-card__img-wrapper--large {
@@ -1385,13 +1403,16 @@ body {
 /* Cuerpo de texto */
 .solidez-card__body {
     padding: 1.5rem 0 0 0;
-    display: flex;             /* ← AÑADE ESTO */
-    flex-direction: column;    /* ← AÑADE ESTO */
+    display: flex;
+    /* ← AÑADE ESTO */
+    flex-direction: column;
+    /* ← AÑADE ESTO */
     flex-grow: 1;
 }
 
 .solidez-card--small .solidez-card__body {
-    padding: 0;  /* ← la tarjeta pequeña ya tiene padding propio */
+    padding: 0;
+    /* ← la tarjeta pequeña ya tiene padding propio */
 }
 
 .solidez-card__title {
@@ -1403,7 +1424,7 @@ body {
 
 .solidez-card__text {
     font-size: 15px;
-    color: rgb(7,14,70);
+    color: rgb(7, 14, 70);
     line-height: 1.6;
     margin-bottom: 1rem;
 }
@@ -1423,17 +1444,20 @@ body {
 
 /* Título tarjeta GRANDE — serif y grande */
 .solidez-card--large .solidez-card__title {
-    font-family: var(--font-secondary);  /* TiemposHeadline */
+    font-family: var(--font-secondary);
+    /* TiemposHeadline */
     font-size: 32px;
     color: var(--bbva-core-blue);
 }
 
 /* Título tarjetas PEQUEÑAS — sans-serif y más pequeño */
 .solidez-card--small .solidez-card__title {
-    font-family: var(--font-primary);    /* BentonSansBBVA */
-    font-size: 20px;                     /* ← exacto del original */
+    font-family: var(--font-primary);
+    /* BentonSansBBVA */
+    font-size: 20px;
+    /* ← exacto del original */
     font-weight: 700;
-    color: rgb(7,14,70);
+    color: var(--bbva-strong-blue);
     margin-bottom: 0.5rem;
 }
 
@@ -1495,18 +1519,19 @@ body {
     min-height: 320px;
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
 }
 
 .tool-card__img-wrapper {
     display: flex;
-    justify-content: flex-start;
-    margin-bottom: 1.5rem;
-    height: 160px;
+    justify-content: center;
+    padding: 1rem;
+    height: 12.5rem;
     align-items: flex-start;
 }
 
 .tool-card__img {
-    height: 140px;
+    height: 10.5rem;
     width: auto;
     object-fit: contain;
     display: block;
@@ -1520,16 +1545,17 @@ body {
 
 .tool-card__title {
     font-family: var(--font-secondary);
-    font-size: 28px;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--bbva-core-blue);
     line-height: 1.2;
 }
 
 .tool-card__subtitle {
-    font-size: 15px;
-    color: rgb(7, 14, 70);
-    line-height: 1.6;
+    font-size: 1.25rem;
+    color: var(--bbva-strong-blue);
+    line-height: 1.3;
+    font-weight: 800;
 }
 
 @media (max-width: 900px) {
@@ -1537,6 +1563,7 @@ body {
         flex-direction: column;
         align-items: center;
     }
+
     .tool-card {
         width: 100%;
         max-width: 480px;
@@ -1551,25 +1578,29 @@ body {
 .prefooter-section {
     background-color: var(--bbva-white);
     padding: 3rem 0;
+    width: 97.5%;
+    border-radius: 1rem;
+        margin: 0 auto;
 }
 
 .prefooter-container {
     width: 100%;
-    max-width: 1224px;
+    max-width: 79rem;
     margin: 0 auto;
     padding: 0 1.25rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2.5rem;
+    gap: 1.8rem;
 }
 
 .prefooter-col__title {
     font-family: var(--font-primary);
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 1.15rem;
+    font-weight: 1000;
     color: var(--bbva-core-blue);
     margin-bottom: 1.25rem;
     line-height: 1.3;
+    letter-spacing: 0.4px;
 }
 
 .prefooter-col__list {
@@ -1581,14 +1612,16 @@ body {
 
 .prefooter-col__list a {
     text-decoration: none;
+    font-weight: 800;
     color: var(--bbva-navy);
-    font-size: 14px;
+    font-size: 0.9375rem;
     line-height: 1.4;
     transition: text-decoration 0.2s;
 }
 
 .prefooter-col__list a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: var(--bbva-strong-blue);
 }
 
 .prefooter-col__body {
@@ -1599,7 +1632,7 @@ body {
 }
 
 .prefooter-col__body p {
-    font-size: 14px;
+    font-size: 0.9375rem;
     color: var(--bbva-text-dark);
     line-height: 1.6;
 }
@@ -1609,7 +1642,10 @@ body {
     color: var(--bbva-navy);
     text-decoration: none;
 }
-.prefooter-link-bold:hover { text-decoration: underline; }
+
+.prefooter-link-bold:hover {
+    text-decoration: underline;
+}
 
 /* Botón "Retomar solicitud" */
 .prefooter-download-link {
@@ -1617,21 +1653,29 @@ body {
     align-items: center;
     gap: 0.6rem;
     color: var(--bbva-navy);
-    font-size: 14px;
+    font-size: 0.9375rem;
     font-weight: 700;
     text-decoration: none;
-    border: 1.5px solid var(--bbva-navy);
+    border: none;
+
     border-radius: 6px;
-    padding: 10px 14px;
+    padding: 10px 0; /* más limpio sin caja */
     width: fit-content;
+
     transition: background 0.2s;
 }
+
 .prefooter-download-link:hover {
     background-color: rgba(0, 19, 145, 0.06);
 }
+
 .prefooter-download-link svg {
     flex-shrink: 0;
     stroke: var(--bbva-navy);
+}
+
+.prefooter-icon {
+    fill: var(--bbva-navy);
 }
 
 @media (max-width: 1024px) {
@@ -1639,6 +1683,7 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 @media (max-width: 600px) {
     .prefooter-container {
         grid-template-columns: 1fr;
@@ -1653,12 +1698,15 @@ body {
 .main-footer {
     background-color: var(--bbva-navy);
     border-radius: 1rem 1rem 0 0;
+    margin: 0 auto;
     margin-top: 0;
+    
+    width: 97.5%;
 }
 
 .footer-inner {
     max-width: 1224px;
-    margin: 0 auto;
+    margin: 1.5rem auto 0;
     padding: 2rem 1.5rem 1.5rem;
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -1706,7 +1754,11 @@ body {
     opacity: 0.9;
     transition: opacity 0.2s;
 }
-.footer-links__list a:hover { opacity: 1; text-decoration: underline; }
+
+.footer-links__list a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
 
 /* Redes sociales */
 .footer-social {
@@ -1724,12 +1776,18 @@ body {
     justify-content: center;
     width: 36px;
     height: 36px;
-    border: 1.5px solid rgba(255,255,255,0.4);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
     transition: border-color 0.2s;
 }
-.footer-social__link:hover { border-color: rgba(255,255,255,0.9); }
-.footer-social__link svg { display: block; }
+
+.footer-social__link:hover {
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-social__link svg {
+    display: block;
+}
 
 /* Vigilado */
 .footer-vigilado {
@@ -1743,7 +1801,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    border: 1.5px solid rgba(255,255,255,0.5);
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
     padding: 6px 10px;
     border-radius: 4px;
 }
@@ -1753,7 +1811,7 @@ body {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.12em;
-    border-right: 1.5px solid rgba(255,255,255,0.4);
+    border-right: 1.5px solid rgba(255, 255, 255, 0.4);
     padding-right: 8px;
 }
 
@@ -1770,12 +1828,12 @@ body {
 .footer-copyright {
     grid-column: 1 / 4;
     grid-row: 3;
-    border-top: 1px solid rgba(255,255,255,0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
     padding-top: 1rem;
 }
 
 .footer-copyright p {
-    color: rgba(255,255,255,0.75);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 13px;
 }
 
@@ -1784,6 +1842,7 @@ body {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
     }
+
     .footer-logo-box,
     .footer-links,
     .footer-social,
@@ -1792,6 +1851,9 @@ body {
         grid-column: 1;
         grid-row: auto;
     }
+
     .footer-social,
-    .footer-vigilado { justify-content: flex-start; }
+    .footer-vigilado {
+        justify-content: flex-start;
+    }
 }
