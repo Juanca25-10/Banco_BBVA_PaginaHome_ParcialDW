@@ -1296,4 +1296,160 @@ body {
     }
 }
 
+/* --- SECCION DEL PANEL COMO CON 3 IMAGENES --- */
 
+/* ── Sección: Y con la solidez de un gran banco ── */
+.solidez-section {
+    padding: 3rem 0 4rem;
+    background-color: var(--bbva-bg-gray);
+}
+
+.solidez-container {
+    width: 100%;
+    max-width: 1224px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.solidez-section__title {
+    font-size: 48px;
+    color: var(--bbva-core-blue);
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+/* Grid principal: 2 columnas */
+.solidez-grid {
+    display: grid;
+    grid-template-columns: 600px 600px;  /* ← ancho fijo exacto por columna */
+    gap: 24px;                           /* ← gap exacto en px */
+    align-items: stretch;
+    justify-content: center;
+}
+
+/* Tarjeta base */
+.solidez-card {
+    background-color: var(--bbva-white);
+    border-radius: 1rem;
+    overflow: visible;
+    height: 100%;
+}
+
+/* ── Tarjeta grande (izquierda) ── */
+.solidez-card--large {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 24px; 
+}
+
+.solidez-card__img-wrapper--large {
+    width: 552px;
+    height: 272px;
+    overflow: hidden;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+/* ── Tarjetas pequeñas (derecha) ── */
+.solidez-card--small {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.solidez-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.solidez-card__img-wrapper--small {
+    width: 221px;
+    height: 221px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+/* Imagen compartida */
+.solidez-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Cuerpo de texto */
+.solidez-card__body {
+    padding: 1.5rem 0 0 0;
+    display: flex;             /* ← AÑADE ESTO */
+    flex-direction: column;    /* ← AÑADE ESTO */
+    flex-grow: 1;
+}
+
+.solidez-card--small .solidez-card__body {
+    padding: 0;  /* ← la tarjeta pequeña ya tiene padding propio */
+}
+
+.solidez-card__title {
+    font-size: 32px;
+    color: var(--bbva-core-blue);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+}
+
+.solidez-card__text {
+    font-size: 15px;
+    color: rgb(7,14,70);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.solidez-card__link {
+    color: var(--bbva-navy);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    display: inline-block;
+    margin-top: auto;
+}
+
+.solidez-card__link:hover {
+    text-decoration: underline;
+}
+
+/* Título tarjeta GRANDE — serif y grande */
+.solidez-card--large .solidez-card__title {
+    font-family: var(--font-secondary);  /* TiemposHeadline */
+    font-size: 32px;
+    color: var(--bbva-core-blue);
+}
+
+/* Título tarjetas PEQUEÑAS — sans-serif y más pequeño */
+.solidez-card--small .solidez-card__title {
+    font-family: var(--font-primary);    /* BentonSansBBVA */
+    font-size: 20px;                     /* ← exacto del original */
+    font-weight: 700;
+    color: rgb(7,14,70);
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .solidez-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .solidez-card--small {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .solidez-card__img-wrapper--small {
+        width: 100%;
+        height: 200px;
+    }
+}
