@@ -301,7 +301,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     align-items: flex-start;
-    padding: 5rem 15.5%;
+    padding: 5rem 6%;
     min-height: 0;
 }
 
@@ -595,8 +595,8 @@ body {
    ========================================================= */
 
 .slide-type-split {
-    background-color: var(--bbva-bg-gray);
-    padding: 64px 35% 64px 15%;
+    background-color: var(--bbva-white);
+    padding: 64px 100px 64px 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -615,6 +615,10 @@ body {
     font-style: italic;
     color: #070e46;
     margin-bottom: 16px;
+    display: inline-block;
+    background-color: var(--bbva-bg-gray);
+    padding: 0 0.8rem;
+    border-radius: 10px;
 }
 
 .slide-split__title {
