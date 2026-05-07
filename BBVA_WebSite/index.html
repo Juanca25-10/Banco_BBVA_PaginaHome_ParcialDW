@@ -220,16 +220,22 @@
         </section>
 
         <section class="quick-actions-grid">
-            <!-- Controles del carrusel móvil (quick actions) -->
+
+            <!-- Controles: contador izquierda | flechas derecha -->
             <div class="mob-carousel-header" id="qaControls">
-                <button class="mob-carousel-btn" id="qaPrev" aria-label="Anterior">
-                    <svg viewBox="0 0 12 20" width="20" height="20" fill="none"><polyline points="10 2 2 10 10 18" stroke="#001391" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
                 <span class="mob-carousel-counter" id="qaCounter">1 de 3</span>
-                <button class="mob-carousel-btn" id="qaNext" aria-label="Siguiente">
-                    <svg viewBox="0 0 12 20" width="20" height="20" fill="none"><polyline points="2 2 10 10 2 18" stroke="#001391" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
+                <div class="mob-carousel-arrows">
+                    <button class="mob-carousel-btn" id="qaPrev" aria-label="Anterior">
+                        <svg viewBox="0 0 12 20" width="20" height="20" fill="none"><polyline points="10 2 2 10 10 18" stroke="#001391" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <button class="mob-carousel-btn" id="qaNext" aria-label="Siguiente">
+                        <svg viewBox="0 0 12 20" width="20" height="20" fill="none"><polyline points="2 2 10 10 2 18" stroke="#001391" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
             </div>
+
+            <!-- Viewport: recorta las páginas fuera de vista -->
+            <div class="qa-viewport">
             <div class="quick-actions-container" id="qaTrack">
 
                 <a href="#" class="action-card">
@@ -310,7 +316,8 @@
                     <span class="action-text">Quiero conocer las noticias</span>
                 </a>
 
-            </div>
+            </div><!-- /.quick-actions-container -->
+            </div><!-- /.qa-viewport -->
         </section>
 
         <section class="promo-highlight-section">

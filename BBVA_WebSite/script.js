@@ -128,35 +128,27 @@ window.addEventListener('scroll', () => {
    Solo se inicializan en pantallas ≤ 768px
    ========================================================== */
 
+/* =========================================================
+   CARRUSELES MÓVILES — Quick Actions & Toolgrid
+   Quick Actions: 6 cards, 2 visibles por página → 3 páginas
+   Toolgrid:      2 cards, 1 visible por página  → 2 páginas
+   ========================================================= */
 (function initMobileCarousels() {
     'use strict';
 
-    if (window.innerWidth > 768) return;
-
     /**
-     * Construye un carrusel por scroll controlado con botones.
-     * @param {Object} opts
-     *   trackId     – id del contenedor (overflow: scroll)
-     *   prevId      – id botón anterior
-     *   nextId      – id botón siguiente
-     *   counterId   – id del span contador
-     *   totalPages  – número de páginas
-     *   itemsPerPage– cuántos ítems se muestran por página
+     * Carrusel de páginas usando CSS transform (no scrollLeft).
+     * El track tiene width: N*100% y se mueve con translateX.
      */
-    function buildCarousel(opts) {
+    function buildPageCarousel(opts) {
         var track      = document.getElementById(opts.trackId);
         var prevBtn    = document.getElementById(opts.prevId);
         var nextBtn    = document.getElementById(opts.nextId);
         var counter    = document.getElementById(opts.counterId);
+        var totalPages = opts.totalPages || 1;
+        var current    = 0;
 
         if (!track || !prevBtn || !nextBtn || !counter) return;
-
-        var totalPages   = opts.totalPages || 1;
-        var current      = 0;
-
-        function updateCounter() {
-            counter.textContent = (current + 1) + ' de ' + totalPages;
-        }
 
         function setButtons() {
             prevBtn.disabled = (current === 0);
@@ -167,10 +159,10 @@ window.addEventListener('scroll', () => {
 
         function goTo(index) {
             current = Math.max(0, Math.min(index, totalPages - 1));
-            /* Calcula el scrollLeft basado en la fracción del total */
-            var scrollAmount = (track.scrollWidth / totalPages) * current;
-            track.scrollLeft = scrollAmount;
-            updateCounter();
+            /* Cada página es 1/totalPages del track (que mide totalPages*100%) */
+            var pct = current * (100 / totalPages);
+            track.style.transform = 'translateX(-' + pct + '%)';
+            counter.textContent = (current + 1) + ' de ' + totalPages;
             setButtons();
         }
 
@@ -184,32 +176,47 @@ window.addEventListener('scroll', () => {
         }, { passive: true });
         track.addEventListener('touchend', function (e) {
             var delta = touchStartX - e.changedTouches[0].clientX;
-            if (Math.abs(delta) > 50) {
+            if (Math.abs(delta) > 40) {
                 goTo(delta > 0 ? current + 1 : current - 1);
             }
         }, { passive: true });
 
-        /* Estado inicial */
+        /* Reset al pasar a desktop */
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                track.style.transform = '';
+                current = 0;
+            } else {
+                goTo(current);
+            }
+        });
+
         goTo(0);
     }
 
-    /* ── Quick Actions: 6 tarjetas, 2 visibles → 3 páginas ── */
-    buildCarousel({
-        trackId:    'qaTrack',
-        prevId:     'qaPrev',
-        nextId:     'qaNext',
-        counterId:  'qaCounter',
-        totalPages: 3
-    });
+    function init() {
+        if (window.innerWidth > 768) return;
 
-    /* ── Toolgrid: 2 tarjetas, 1 visible → 2 páginas ── */
-    buildCarousel({
-        trackId:    'toolTrack',
-        prevId:     'toolPrev',
-        nextId:     'toolNext',
-        counterId:  'toolCounter',
-        totalPages: 2
-    });
+        /* Quick Actions: 3 páginas de 2 cards */
+        buildPageCarousel({
+            trackId:    'qaTrack',
+            prevId:     'qaPrev',
+            nextId:     'qaNext',
+            counterId:  'qaCounter',
+            totalPages: 3
+        });
+
+        /* Toolgrid: 2 páginas de 1 card */
+        buildPageCarousel({
+            trackId:    'toolTrack',
+            prevId:     'toolPrev',
+            nextId:     'toolNext',
+            counterId:  'toolCounter',
+            totalPages: 2
+        });
+    }
+
+    init();
 
 })();
 
