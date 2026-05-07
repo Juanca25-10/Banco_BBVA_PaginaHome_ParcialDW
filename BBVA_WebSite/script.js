@@ -221,4 +221,5 @@ window.addEventListener('scroll', () => {
     if (!coinImg) return;
     coinImg.style.transform = 'none';
     coinImg.style.willChange = 'auto';
+    
 })();
