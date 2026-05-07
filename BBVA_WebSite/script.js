@@ -1,4 +1,4 @@
-  window.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {
     const header = document.getElementById('bbva-header');
     if (window.scrollY > 50) {
         header.classList.add('header-scrolled');
@@ -121,3 +121,104 @@
 
 
 
+
+
+/* ==========================================================
+   CARRUSELES MÓVILES — Quick Actions & Toolgrid
+   Solo se inicializan en pantallas ≤ 768px
+   ========================================================== */
+
+(function initMobileCarousels() {
+    'use strict';
+
+    if (window.innerWidth > 768) return;
+
+    /**
+     * Construye un carrusel por scroll controlado con botones.
+     * @param {Object} opts
+     *   trackId     – id del contenedor (overflow: scroll)
+     *   prevId      – id botón anterior
+     *   nextId      – id botón siguiente
+     *   counterId   – id del span contador
+     *   totalPages  – número de páginas
+     *   itemsPerPage– cuántos ítems se muestran por página
+     */
+    function buildCarousel(opts) {
+        var track      = document.getElementById(opts.trackId);
+        var prevBtn    = document.getElementById(opts.prevId);
+        var nextBtn    = document.getElementById(opts.nextId);
+        var counter    = document.getElementById(opts.counterId);
+
+        if (!track || !prevBtn || !nextBtn || !counter) return;
+
+        var totalPages   = opts.totalPages || 1;
+        var current      = 0;
+
+        function updateCounter() {
+            counter.textContent = (current + 1) + ' de ' + totalPages;
+        }
+
+        function setButtons() {
+            prevBtn.disabled = (current === 0);
+            nextBtn.disabled = (current === totalPages - 1);
+            prevBtn.setAttribute('aria-disabled', prevBtn.disabled);
+            nextBtn.setAttribute('aria-disabled', nextBtn.disabled);
+        }
+
+        function goTo(index) {
+            current = Math.max(0, Math.min(index, totalPages - 1));
+            /* Calcula el scrollLeft basado en la fracción del total */
+            var scrollAmount = (track.scrollWidth / totalPages) * current;
+            track.scrollLeft = scrollAmount;
+            updateCounter();
+            setButtons();
+        }
+
+        prevBtn.addEventListener('click', function () { goTo(current - 1); });
+        nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+        /* Swipe táctil */
+        var touchStartX = 0;
+        track.addEventListener('touchstart', function (e) {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        track.addEventListener('touchend', function (e) {
+            var delta = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(delta) > 50) {
+                goTo(delta > 0 ? current + 1 : current - 1);
+            }
+        }, { passive: true });
+
+        /* Estado inicial */
+        goTo(0);
+    }
+
+    /* ── Quick Actions: 6 tarjetas, 2 visibles → 3 páginas ── */
+    buildCarousel({
+        trackId:    'qaTrack',
+        prevId:     'qaPrev',
+        nextId:     'qaNext',
+        counterId:  'qaCounter',
+        totalPages: 3
+    });
+
+    /* ── Toolgrid: 2 tarjetas, 1 visible → 2 páginas ── */
+    buildCarousel({
+        trackId:    'toolTrack',
+        prevId:     'toolPrev',
+        nextId:     'toolNext',
+        counterId:  'toolCounter',
+        totalPages: 2
+    });
+
+})();
+
+/* ── Deshabilitar parallax de moneda en mobile ── */
+(function disableCoinParallaxOnMobile() {
+    'use strict';
+    if (window.innerWidth > 768) return;
+    var coinImg = document.querySelector('.col-image img');
+    if (!coinImg) return;
+    coinImg.style.transform = 'none';
+    coinImg.style.willChange = 'auto';
+})();
