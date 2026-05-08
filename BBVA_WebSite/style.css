@@ -338,7 +338,6 @@ body {
 
 /* =========================================================
    CARRUSEL HERO BBVA
-   Desarrollado por: [Tu nombre]
    ========================================================= */
 
 /* --- Sección principal del carrusel --- */
@@ -441,7 +440,7 @@ body {
     max-width: 560px;
     min-height: 320px;
     margin-top: 80px;
-    margin-left: 30px;
+    margin-left: 210px;
 }
 
 .hero-card--slide2 {
