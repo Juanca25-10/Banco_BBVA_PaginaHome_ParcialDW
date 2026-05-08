@@ -206,6 +206,15 @@ window.addEventListener('scroll', () => {
             totalPages: 3
         });
 
+        /* Cards "Con todo lo que te importa": 3 páginas de 1 card */
+        buildPageCarousel({
+            trackId:    'cardsTrack',
+            prevId:     'cardsPrev',
+            nextId:     'cardsNext',
+            counterId:  'cardsCounter',
+            totalPages: 3
+        });
+
         /* Toolgrid: 2 páginas de 1 card */
         buildPageCarousel({
             trackId:    'toolTrack',

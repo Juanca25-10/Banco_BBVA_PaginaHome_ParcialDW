@@ -347,7 +347,7 @@
                                     Cumple tus metas con un crédito de libranza fácil a través de tu nómina o pensión.
                                 </p>
 
-                                <a href="#" class="loan-btn">
+                                <a href="#" class="loan-btn loan-btn--desktop">
                                     Solicitar préstamo
                                 </a>
                             </div>
@@ -377,6 +377,11 @@
                             </div>
 
                         </div>
+
+                        <!-- Botón solo visible en mobile (aparece al final) -->
+                        <a href="#" class="loan-btn loan-btn--mobile">
+                            Solicitar préstamo
+                        </a>
 
                     </div>
                 </div>
@@ -414,7 +419,23 @@
         <section class="cards-section">
             <div class="cards-container">
                 <h2 class="title-serif cards-section__title">Con todo lo que te importa</h2>
-                <div class="cards-grid">
+
+                <!-- Controles carrusel móvil (solo visible en mobile) -->
+                <div class="mob-carousel-header" id="cardsControls">
+                    <span class="mob-carousel-counter" id="cardsCounter">1 de 3</span>
+                    <div class="mob-carousel-arrows">
+                        <button class="mob-carousel-btn" id="cardsPrev" aria-label="Anterior">
+                            <svg viewBox="0 0 12 20" width="20" height="20" fill="none"><polyline points="10 2 2 10 10 18" stroke="#001391" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <button class="mob-carousel-btn" id="cardsNext" aria-label="Siguiente">
+                            <svg viewBox="0 0 12 20" width="20" height="20" fill="none"><polyline points="2 2 10 10 2 18" stroke="#001391" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Viewport del carrusel -->
+                <div class="cards-viewport">
+                <div class="cards-grid" id="cardsTrack">
 
                     <!-- Tarjeta 1 -->
                     <div class="info-card">
@@ -461,11 +482,14 @@
                         <a href="#" class="btn-info-card">Ver video</a>
                     </div>
 
-                </div>
+                </div><!-- /cards-grid -->
+                </div><!-- /cards-viewport -->
+
+                <!-- "Ver más" solo visible en mobile -->
+                <a href="#" class="cards-ver-mas">Ver más</a>
+
             </div>
         </section>
-
-        <!-- ── SECCIÓN: Y con la solidez de un gran banco ── -->
         <section class="solidez-section">
             <div class="solidez-container">
                 <h2 class="title-serif solidez-section__title">Y con la solidez de un gran banco</h2>
@@ -532,13 +556,15 @@
             <h2 class="toolgrid-title">Que va contigo estés donde estés</h2>
             <!-- Controles carrusel móvil toolgrid -->
             <div class="mob-carousel-header" id="toolControls">
-                <button class="mob-carousel-btn" id="toolPrev" aria-label="Anterior">
-                    <svg viewBox="0 0 12 20" width="20" height="20" fill="none"><polyline points="10 2 2 10 10 18" stroke="#001391" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
                 <span class="mob-carousel-counter" id="toolCounter">1 de 2</span>
-                <button class="mob-carousel-btn" id="toolNext" aria-label="Siguiente">
-                    <svg viewBox="0 0 12 20" width="20" height="20" fill="none"><polyline points="2 2 10 10 2 18" stroke="#001391" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
+                <div class="mob-carousel-arrows">
+                    <button class="mob-carousel-btn" id="toolPrev" aria-label="Anterior">
+                        <svg viewBox="0 0 12 20" width="20" height="20" fill="none"><polyline points="10 2 2 10 10 18" stroke="#001391" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <button class="mob-carousel-btn" id="toolNext" aria-label="Siguiente">
+                        <svg viewBox="0 0 12 20" width="20" height="20" fill="none"><polyline points="2 2 10 10 2 18" stroke="#001391" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
             </div>
             <div class="toolgrid-wrapper" id="toolTrack">
 
