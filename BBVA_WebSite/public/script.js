@@ -239,3 +239,17 @@ window.addEventListener('scroll', () => {
     coinImg.style.willChange = 'auto';
     
 })();
+
+function closeWelcomeBanner() {
+    const banner = document.getElementById('welcomeBanner');
+    if (banner) {
+        // Le añadimos una transición suave al cerrar
+        banner.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        banner.style.opacity = '0';
+        banner.style.transform = 'translateY(-20px)';
+        
+        setTimeout(() => {
+            banner.remove();
+        }, 400);
+    }
+}

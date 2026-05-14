@@ -2460,3 +2460,66 @@ body {
 #solidezControls {
     display: none !important;
 }
+
+/* --- ESTILO BANNER BIENVENIDA --- */
+.welcome-notification {
+    background-color: var(--bbva-navy); /* Azul BBVA */
+    color: white;
+    padding: 12px 20px;
+    position: relative;
+    z-index: 1001;
+    border-bottom: 3px solid var(--bbva-strong-blue);
+    animation: slideDown 0.5s ease-out;
+
+    /* Sombra: 0 (H), 4px (V hacia abajo), 10px (difuminado), color azul con transparencia */
+    box-shadow: 0 6px 30px rgba(5, 68, 255, 0.3);
+}
+
+.welcome-notification__container {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome-notification__text {
+    flex-grow: 1;
+    font-family: 'BentonSansBBVA', Arial, sans-serif;
+    font-size: 1.1rem;
+}
+
+.welcome-label {
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.welcome-name {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.welcome-notification__close {
+    background: var(--bbva-strong-blue);
+    border: 1px solid var(--bbva-white);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.welcome-notification__close:hover {
+    background: var(--bbva-navy);
+}
+
+/* Animación de entrada */
+@keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
