@@ -172,3 +172,52 @@
     });
 
 })();
+
+/* ── Custom Select BBVA ── */
+
+(function initCustomSelect() {
+
+    const trigger = document.getElementById('customSelectTrigger');
+    const optionsBox = document.getElementById('customOptions');
+    const selected = document.getElementById('selectedOption');
+
+    if (!trigger || !optionsBox || !selected) return;
+
+    const options = optionsBox.querySelectorAll('.custom-option');
+
+    trigger.addEventListener('click', function () {
+
+        optionsBox.classList.toggle('open');
+        trigger.classList.toggle('active');
+
+    });
+
+    options.forEach(function (option) {
+
+        option.addEventListener('click', function () {
+
+            options.forEach(o => o.classList.remove('active'));
+
+            option.classList.add('active');
+
+            selected.textContent = option.textContent;
+
+            optionsBox.classList.remove('open');
+            trigger.classList.remove('active');
+
+        });
+
+    });
+
+    document.addEventListener('click', function (e) {
+
+        if (!e.target.closest('.custom-select-wrapper')) {
+
+            optionsBox.classList.remove('open');
+            trigger.classList.remove('active');
+
+        }
+
+    });
+
+})();
