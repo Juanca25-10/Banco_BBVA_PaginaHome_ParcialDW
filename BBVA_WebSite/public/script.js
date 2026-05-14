@@ -239,3 +239,51 @@ window.addEventListener('scroll', () => {
     coinImg.style.willChange = 'auto';
     
 })();
+
+/* ═══════════════════════════════════════════════
+   FULLSCREEN MENU BBVA
+═══════════════════════════════════════════════ */
+
+(function initFullscreenMenu() {
+
+    const menu = document.getElementById('bbvaMenuOverlay');
+
+    const openDesktop = document.getElementById('menuToggleDesktop');
+    const openMobile = document.getElementById('menuToggleMobile');
+
+    const closeBtn = document.getElementById('closeFullscreenMenu');
+
+    if (!menu) return;
+
+    function openMenu() {
+        menu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        menu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (openDesktop) {
+        openDesktop.addEventListener('click', openMenu);
+    }
+
+    if (openMobile) {
+        openMobile.addEventListener('click', function(e) {
+            e.preventDefault();
+            openMenu();
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeMenu);
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMenu();
+        }
+    });
+
+})();

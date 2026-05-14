@@ -2460,3 +2460,83 @@ body {
 #solidezControls {
     display: none !important;
 }
+
+/* ═══════════════════════════════════════════════
+
+.bbva-menu-links,
+.bbva-secondary-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.bbva-menu-links a,
+.bbva-secondary-links a {
+    text-decoration: none;
+    color: #001391;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    padding: 16px 0;
+
+    transition: transform .2s ease;
+}
+
+.bbva-secondary-links a {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.bbva-menu-links a:hover,
+.bbva-secondary-links a:hover {
+    transform: translateX(6px);
+}
+
+.bbva-menu-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+    margin: 36px 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+
+    .bbva-menu-body {
+        grid-template-columns: 1fr;
+    }
+
+    .bbva-opportunities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bbva-feature-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .bbva-menu-header {
+        padding: 0 20px;
+    }
+
+    .bbva-menu-body {
+        padding: 30px 20px 80px;
+    }
+
+    .bbva-menu-title {
+        font-size: 44px;
+    }
+
+    .bbva-feature-content h2 {
+        font-size: 40px;
+    }
+
+    .bbva-menu-links a {
+        font-size: 20px;
+    }
+
+}
