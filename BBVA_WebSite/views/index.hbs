@@ -15,15 +15,26 @@
         <div class="login-header-container">
 
             <div class="login-header-left">
-                <a href="#" class="login-logo">
-                    <img src="https://static.wikia.nocookie.net/logopedia/images/f/ff/BBVA_2025.svg/revision/latest/scale-to-width-down/250?cb=20250703225525&path-prefix=es"
-                        alt="BBVA">
-                </a>
-                <nav class="login-nav">
-                    <a href="#" class="active">Persona</a>
-                    <a href="#">Empresa</a>
-                </nav>
-            </div>
+    <!-- Ícono usuario: solo visible en móvil -->
+    <button class="btn-user-mobile" type="button" aria-label="Perfil">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+        </svg>
+    </button>
+
+    <a href="#" class="login-logo">
+        <img src="https://static.wikia.nocookie.net/logopedia/images/f/ff/BBVA_2025.svg/revision/latest/scale-to-width-down/250?cb=20250703225525&path-prefix=es"
+            alt="BBVA">
+    </a>
+
+    <nav class="login-nav">
+        <a href="#" class="active">Persona</a>
+        <a href="#">Empresa</a>
+    </nav>
+</div>
 
             <div class="login-header-right">
                 <button class="btn-close-login" type="button">
@@ -54,7 +65,7 @@
 
             <div class="left-zone">
 
-                <h1 class="login-title">Hola, inicia sesión en BBVA <br>Net:</h1>
+                <h1 class="login-title">Hola, inicia sesión en BBVA Net:</h1>
 
                 <div class="login-form">
                     <div class="login-form-wrapper">

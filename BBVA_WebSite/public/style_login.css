@@ -5,6 +5,7 @@
     font-family: 'BentonSansBBVA';
     src: url('./BentonSansBBVA-Book-Lite.otf') format('opentype');
 }
+
 @font-face {
     font-family: 'TiemposHeadline';
     src: url('./TiemposHeadline-Bold.otf') format('opentype');
@@ -16,30 +17,48 @@
     font-family: 'TiemposHeadline';
     src: url('./TiemposHeadline-BoldItalic.otf') format('opentype');
     font-weight: bold;
+    font-style: italic;
 }
 
 /* =========================================================
    VARIABLES
    ========================================================= */
 :root {
-    --bbva-core-blue:  #072146;
-    --bbva-navy:       #001391;
-    --bbva-light-bg:   #f4f5f6;
-    --bbva-white:      #ffffff;
-    --font-primary:    'BentonSansBBVA', Arial, sans-serif;
+    --bbva-core-blue: #072146;
+    --bbva-navy: #001391;
+    --bbva-light-bg: #f4f5f6;
+    --bbva-white: #ffffff;
+    --font-primary: 'BentonSansBBVA', Arial, sans-serif;
+
+    /* Espaciado y radio */
+    --grid-max: 1144px;
+    --grid-side-pad: 24px;
+    --card-radius: 14px;
+    --card-radius-sm: 12px;
 }
 
 /* =========================================================
    RESET
    ========================================================= */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+/* =========================================================
+   BODY — sin overflow horizontal
+   ========================================================= */
 body {
-    background-color: #eef1f5;
+    background-color: rgba(247, 249, 251);
     font-family: var(--font-primary);
+    color: #070e46;
+    line-height: 1.5;
+    overflow-x: hidden;
+    /* ← FIX: evita scroll fantasma */
+    -webkit-text-size-adjust: 100%;
 }
 
 /* =========================================================
@@ -49,8 +68,11 @@ body {
     width: 100%;
     padding-top: 2px;
 }
+
 .login-header-container {
+    /* FIX: fluido con max-width en lugar de ancho fijo */
     width: calc(100% - 44px);
+    max-width: 1400px;
     height: 86px;
     margin: 0 auto;
     background-color: #f7f7f7;
@@ -58,27 +80,35 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 355px;
-    padding-right: 355px;
+    padding: 0 clamp(20px, 5vw, 355px);
+    /* ← FIX: padding fluido */
     box-shadow:
         0 3px 3px rgba(0, 0, 0, 0.02),
         0 3px 8px rgba(0, 0, 0, 0.035),
         0 10px 24px rgba(0, 0, 0, 0.02);
 }
+
 .login-header-left {
     display: flex;
     align-items: center;
     gap: 70px;
+    flex-shrink: 1;
+    min-width: 0;
 }
+
 .login-logo img {
     width: 135px;
     display: block;
+    flex-shrink: 0;
 }
+
 .login-nav {
     display: flex;
     align-items: center;
     gap: 42px;
+    flex-shrink: 0;
 }
+
 .login-nav a {
     position: relative;
     text-decoration: none;
@@ -87,7 +117,9 @@ body {
     font-weight: 700;
     letter-spacing: -0.01em;
     padding-bottom: 0.5px;
+    white-space: nowrap;
 }
+
 .login-nav a.active::after {
     content: "";
     position: absolute;
@@ -97,6 +129,7 @@ body {
     height: 1.5px;
     background-color: var(--bbva-navy);
 }
+
 .btn-close-login {
     border: none;
     background: transparent;
@@ -109,26 +142,22 @@ body {
     font-weight: 700;
     font-family: var(--font-primary);
     transition: opacity 0.2s ease;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
+
 .btn-close-login:hover {
     opacity: 0.7;
 }
+
 .btn-close-login svg {
     width: 24px;
     height: 24px;
 }
 
 /* =========================================================
-   MAIN LOGIN — SECCIÓN CENTRAL / PIXEL-FEEL
+   MAIN LOGIN
    ========================================================= */
-body {
-    background-color: rgba(247, 249, 251);
-    font-family: var(--font-primary);
-    color: #070e46;
-    line-height: 1.5;
-    overflow-x: hidden;
-}
-
 .login-main {
     width: 100%;
     padding-top: 24px;
@@ -136,9 +165,12 @@ body {
 
 /* =========================================================
    BANNER DE SEGURIDAD
+   FIX: de width fijo 1144px a max-width fluido
    ========================================================= */
 .security-banner {
-    width: 1144px;
+    width: calc(100% - var(--grid-side-pad) * 2);
+    /* ← FIX */
+    max-width: var(--grid-max);
     margin: 20px auto 45px auto;
     display: flex;
     align-items: center;
@@ -146,7 +178,9 @@ body {
     color: #23366f;
     font-size: 15px;
     line-height: 20px;
+    padding: 0;
 }
+
 .security-banner svg {
     width: 24px;
     height: 24px;
@@ -156,12 +190,16 @@ body {
 
 /* =========================================================
    GRID PRINCIPAL
+   FIX: de columnas fijas a fluidas
    ========================================================= */
 .grid {
-    width: 1144px;
+    width: calc(100% - var(--grid-side-pad) * 2);
+    /* ← FIX */
+    max-width: var(--grid-max);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 653px 467px;
+    /* FIX: columna izquierda fluida, derecha con min/max controlado */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 467px);
     gap: 24px;
     align-items: start;
 }
@@ -171,42 +209,52 @@ body {
    ========================================================= */
 .left-zone {
     background: #ffffff;
-    border-radius: 14px;
+    border-radius: var(--card-radius);
     min-height: 405px;
-    padding: 24px 24px 24px 24px;
+    padding: 24px;
     box-shadow: 0 2px 10px rgba(7, 33, 70, 0.035);
+    min-width: 0;
+    /* ← FIX: evita que el grid lo expanda */
 }
 
 .login-title {
-    max-width: 575px;
-    margin: 40px 0 28px 0;
-    font-family: 'TiemposHeadline';
+    max-width: 100%;
+    /* ← FIX: era 575px fijo */
+    margin: 40px 0 28px;
+    font-family: 'TiemposHeadline', Georgia, serif;
     font-size: 40px;
     font-weight: 700;
     font-style: italic;
-    line-height: 48px;
-    letter-spacing: 0%;
+    line-height: 1.2;
     color: #070e46;
 }
 
+/* =========================================================
+   FORMULARIO
+   FIX: ancho fluido en lugar de 345px fijo
+   ========================================================= */
 .login-form-wrapper {
-    width: 345px;
-    max-width: 100%;
+    width: 100%;
+    /* ← FIX */
+    max-width: 345px;
 }
 
 /* =========================================================
    CAMPOS
+   FIX: ancho fluido en lugar de 336px fijo
    ========================================================= */
 .bbva-field {
     position: relative;
     width: 100%;
     margin-bottom: 11px;
 }
+
 .bbva-field input,
 .bbva-field select {
-    width: 336px;
+    width: 100%;
+    /* ← FIX: era 336px fijo */
     height: 52px;
-    border: 2px  solid rgba(70, 83, 109);
+    border: 2px solid rgba(70, 83, 109);
     border-radius: 8px;
     background: #ffffff;
     padding: 0 46px 0 16px;
@@ -219,19 +267,23 @@ body {
     box-shadow: none;
     transition: border-color 0.16s ease, box-shadow 0.16s ease;
 }
+
 .bbva-field input::placeholder {
     color: #8a95ad;
 }
+
 .bbva-field select {
     appearance: none;
     cursor: pointer;
     color: #27375f;
 }
+
 .bbva-field input:focus,
 .bbva-field select:focus {
     border-color: #001391;
     box-shadow: 0 0 0 1px rgba(0, 19, 145, 0.12);
 }
+
 .field-arrow {
     position: absolute;
     right: 14px;
@@ -242,6 +294,7 @@ body {
     display: flex;
     align-items: center;
 }
+
 .toggle-password {
     position: absolute;
     right: 10px;
@@ -259,12 +312,13 @@ body {
     padding: 0;
     transition: opacity 0.16s ease;
 }
+
 .toggle-password:hover {
     opacity: 0.72;
 }
 
 /* =========================================================
-   ACCIONES
+   ACCIONES DE LOGIN
    ========================================================= */
 .login-actions {
     display: flex;
@@ -273,6 +327,7 @@ body {
     gap: 24px;
     margin-top: 16px;
 }
+
 .btn-login {
     width: 128px;
     height: 48px;
@@ -288,13 +343,17 @@ body {
     cursor: pointer;
     letter-spacing: -0.01em;
     transition: background 0.18s ease, transform 0.12s ease;
+    white-space: nowrap;
 }
+
 .btn-login:hover {
     background: #0022d4;
 }
+
 .btn-login:active {
     transform: translateY(1px);
 }
+
 .forgot-password {
     color: #001391;
     text-decoration: none;
@@ -304,6 +363,7 @@ body {
     letter-spacing: -0.01em;
     transition: opacity 0.16s ease;
 }
+
 .forgot-password:hover {
     opacity: 0.72;
 }
@@ -315,70 +375,80 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    min-width: 0;
+    /* ← FIX */
 }
+
 .right-box {
     background: #ffffff;
-    border-radius: 14px;
+    border-radius: var(--card-radius);
     box-shadow: 0 2px 10px rgba(7, 33, 70, 0.035);
 }
 
 /* ── Card 1: Regístrate ── */
 .right-box-register {
     min-height: 356px;
-    padding: 16px 16px 16px 16px;
+    padding: 16px;
 }
+
 .side-icon-wrap,
 .side-card-image {
     display: none;
 }
+
 .side-asset-slot {
     width: 168px;
     height: 168px;
-    margin: 0 0 44px 0;
+    margin: 0 0 44px;
     border-radius: 20px;
-
 }
+
 .side-asset-slot img,
 .side-asset-slot svg {
-    width: 100%;
-    height: 100%;
+    width: 168px;
+    height: 168px;
     display: block;
     object-fit: contain;
 }
+
 .side-title {
-    margin: 0 0 30px 0;
+    margin: 0 0 30px;
     font-family: 'TiemposHeadline', Georgia, serif;
     font-size: 32px;
     font-weight: 700;
     font-style: italic;
-    line-height: 40px;
-    letter-spacing: 0%;
+    line-height: 1.25;
     color: #070e46;
 }
+
 .side-text {
     width: 100%;
-    margin: 0 0 20px 0;
+    margin: 0 0 20px;
     color: #28395f;
     font-size: 15px;
     font-weight: 350;
     line-height: 24px;
 }
+
 .btn-outline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 141px;
     height: 48px;
     border-radius: 8px;
     border: 2px solid #001391;
     background: transparent;
     color: #001391;
-
     font-size: 15px;
     line-height: 24px;
     font-weight: 700;
+    font-family: var(--font-primary);
     cursor: pointer;
-    letter-spacing: 0%;
-    
+    text-decoration: none;
     transition: background 0.18s ease, color 0.18s ease;
 }
+
 .btn-outline:hover {
     background: rgba(0, 19, 145, 0.05);
 }
@@ -388,30 +458,33 @@ body {
    ========================================================= */
 .alert-card {
     min-height: 262px;
-    padding: 50px 16px 16px 16px;
+    padding: 50px 16px 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
 }
+
 .alert-carousel-wrap {
     overflow: hidden;
     width: 100%;
     flex: 1;
 }
+
 .alert-track {
     display: flex;
     height: 100%;
     transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
 }
+
 .alert-slide {
     min-width: 100%;
     flex: 0 0 100%;
 }
+
 .alert-title {
-    
-    margin: 0 0 42px 0;
+    margin: 0 0 42px;
     font-family: 'TiemposHeadline', Georgia, serif;
     font-size: 24px;
     font-weight: 700;
@@ -420,12 +493,14 @@ body {
     letter-spacing: -0.035em;
     color: #070e46;
 }
+
 .alert-content {
     display: grid;
     grid-template-columns: 48px 1fr;
     align-items: center;
     gap: 18px;
 }
+
 .alert-icon {
     width: 48px;
     height: 48px;
@@ -435,7 +510,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
+
 .alert-text {
     margin: 0;
     color: #28395f;
@@ -443,6 +520,7 @@ body {
     font-weight: 400;
     line-height: 24px;
 }
+
 .alert-slider {
     display: flex;
     align-items: center;
@@ -451,6 +529,7 @@ body {
     padding-top: 28px;
     color: #001391;
 }
+
 .alert-ctrl {
     width: 24px;
     height: 24px;
@@ -465,13 +544,16 @@ body {
     border-radius: 50%;
     transition: background 0.16s ease, opacity 0.16s ease;
 }
+
 .alert-ctrl:hover {
     background: rgba(0, 19, 145, 0.07);
 }
+
 .alert-ctrl:disabled {
     opacity: 0.32;
     cursor: default;
 }
+
 .alert-counter {
     min-width: 54px;
     color: #001391;
@@ -485,21 +567,26 @@ body {
 
 /* =========================================================
    FOOTER / SECCIÓN INFERIOR
+   FIX: de 1857px a 100% fluido
    ========================================================= */
 .login-footer {
-    width: 1857px;
-    height: 240px;
+    width: 100%;
+    /* ← FIX: era 1857px */
+    height: auto;
+    /* ← FIX: era 240px fijo */
     border-radius: 16px;
     margin: 24px auto 0 auto;
-    background-color: rgb(0,34,127);
-    padding: 32px 32px 32px 32px;
+    background-color: rgb(0, 34, 127);
+    padding: 32px;
     color: #ffffff;
 }
+
 .footer-content {
-    width: 1150px;
-    max-width: calc(100% - 48px);
+    width: 100%;
+    max-width: 1150px;
     margin: 0 auto;
 }
+
 .footer-main-row {
     display: flex;
     justify-content: space-between;
@@ -507,17 +594,20 @@ body {
     gap: 32px;
     margin-bottom: 32px;
 }
+
 .footer-logo img {
     width: 134px;
     display: block;
     filter: brightness(0) invert(1);
-    
 }
+
 .footer-socials {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-wrap: wrap;
 }
+
 .footer-socials a {
     width: 30px;
     height: 30px;
@@ -526,14 +616,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color:#85c8ff;
+    color: #85c8ff;
     text-decoration: none;
     transition: opacity 0.18s ease, border-color 0.18s ease;
+    flex-shrink: 0;
 }
+
 .footer-socials a:hover {
     opacity: 0.82;
     border-color: #ffffff;
 }
+
 .footer-socials svg {
     width: 13px;
     height: 13px;
@@ -543,6 +636,7 @@ body {
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+
 .footer-links {
     display: flex;
     align-items: center;
@@ -551,28 +645,35 @@ body {
     margin-top: 50px;
     margin-bottom: 40px;
 }
+
 .footer-links a {
     color: #85c8ff;
     font-size: 15px;
     font-weight: bold;
     line-height: 24px;
     text-decoration: none;
+    white-space: nowrap;
 }
+
 .footer-links a:hover {
     text-decoration: underline;
 }
+
 .footer-bottom-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 24px;
+    flex-wrap: wrap;
 }
+
 .footer-bottom-row p {
     color: #ffffff;
     font-size: 12px;
     line-height: 16px;
     margin: 0;
 }
+
 .footer-bottom-row span {
     color: #2dccd3;
     font-size: 15px;
@@ -580,189 +681,30 @@ body {
 }
 
 /* =========================================================
-   RESPONSIVE GENERAL
-   ========================================================= */
-@media (max-width: 1400px) {
-    .login-header-container { padding-left: 120px; padding-right: 120px; }
-}
-
-@media (max-width: 1200px) {
-    .security-banner,
-    .grid {
-        width: calc(100% - 48px);
-    }
-    .grid {
-        grid-template-columns: minmax(0, 1.35fr) minmax(360px, 0.95fr);
-    }
-    .left-zone {
-        padding-left: 40px;
-        padding-right: 40px;
-    }
-    .login-title {
-        font-size: 34px;
-    }
-}
-
-@media (max-width: 980px) {
-    .grid {
-        grid-template-columns: 1fr;
-        max-width: 580px;
-    }
-    .right-zone-content {
-        width: 100%;
-    }
-    .right-box-register,
-    .alert-card {
-        min-height: auto;
-    }
-    .btn-outline {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .login-header-container {
-        width: calc(100% - 20px); height: 74px;
-        padding-left: 22px; padding-right: 22px;
-        border-radius: 14px;
-    }
-    .login-header-left { gap: 26px; }
-    .login-logo img { width: 100px; }
-    .login-nav { gap: 20px; }
-    .login-nav a { font-size: 13px; }
-    .btn-close-login span { display: none; }
-
-    .login-main {
-        padding-top: 22px;
-    }
-    .security-banner,
-    .grid {
-        width: calc(100% - 32px);
-    }
-    .security-banner {
-        margin-bottom: 18px;
-        font-size: 13px;
-    }
-    .left-zone {
-        padding: 32px 24px 30px 24px;
-    }
-    .login-title {
-        font-size: 29px;
-        line-height: 1.14;
-        margin-bottom: 25px;
-    }
-    .login-form-wrapper {
-        width: 100%;
-    }
-    .bbva-field input,
-    .bbva-field select {
-        height: 46px;
-    }
-    .login-actions {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 14px;
-        margin-top: 16px;
-    }
-    .btn-login {
-        width: 100%;
-    }
-    .forgot-password {
-        text-align: center;
-    }
-    .right-box-register,
-    .alert-card {
-        padding: 28px 24px 22px 24px;
-    }
-    .side-asset-slot {
-        width: 78px;
-        height: 78px;
-        margin-bottom: 32px;
-    }
-    .side-title {
-        font-size: 25px;
-    }
-    .alert-title {
-        font-size: 21px;
-        margin-bottom: 22px;
-    }
-    .alert-content {
-        grid-template-columns: 44px 1fr;
-        gap: 16px;
-    }
-    .alert-icon {
-        width: 44px;
-        height: 44px;
-    }
-    .login-footer {
-        width: 100%;
-        margin-top: 48px;
-        padding: 36px 0 30px 0;
-    }
-    .footer-content {
-        max-width: calc(100% - 32px);
-    }
-    .footer-main-row,
-    .footer-bottom-row {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .footer-links {
-        gap: 18px 24px;
-    }
-}
-
-@media (max-width: 430px) {
-    .login-title {
-        font-size: 27px;
-    }
-    .left-zone,
-    .right-box-register,
-    .alert-card {
-        border-radius: 12px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    .footer-links {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-    }
-}
-
-/* =========================================================
    CUSTOM SELECT BBVA
+   FIX: ancho fluido
    ========================================================= */
-
 .custom-select-wrapper {
     position: relative;
-    width: 336px;
+    width: 100%;
+    /* ← FIX: era 336px fijo */
 }
 
 .custom-select-trigger {
     width: 100%;
     height: 52px;
-
     border: 2px solid rgba(70, 83, 109);
     border-radius: 8px;
-
     background: #ffffff;
-
     padding: 0 16px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     cursor: pointer;
-
     font-family: var(--font-primary);
     font-size: 14px;
     color: #27375f;
-
-    transition:
-        border-color 0.18s ease,
-        box-shadow 0.18s ease;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .custom-select-trigger:hover {
@@ -777,6 +719,7 @@ body {
 .custom-arrow {
     color: #001391;
     transition: transform 0.2s ease;
+    flex-shrink: 0;
 }
 
 .custom-select-trigger.active .custom-arrow {
@@ -785,29 +728,19 @@ body {
 
 .custom-options {
     position: absolute;
-
     top: calc(100% + 8px);
     left: 0;
-
     width: 100%;
-
     background: #ffffff;
-
     border-radius: 14px;
-
     padding: 10px;
-
     box-shadow:
         0 8px 24px rgba(7, 33, 70, 0.12),
         0 2px 8px rgba(7, 33, 70, 0.08);
-
     display: none;
-
     flex-direction: column;
     gap: 8px;
-
     z-index: 50;
-
     max-height: 320px;
     overflow-y: auto;
 }
@@ -818,22 +751,14 @@ body {
 
 .custom-option {
     min-height: 56px;
-
     border-radius: 10px;
-
     padding: 16px;
-
     display: flex;
     align-items: center;
-
     cursor: pointer;
-
     font-size: 15px;
     color: #27375f;
-
-    transition:
-        background 0.16s ease,
-        color 0.16s ease;
+    transition: background 0.16s ease, color 0.16s ease;
 }
 
 .custom-option:hover {
@@ -844,8 +769,6 @@ body {
     background: #001391;
     color: white;
 }
-
-/* Scrollbar */
 
 .custom-options::-webkit-scrollbar {
     width: 8px;
@@ -858,4 +781,515 @@ body {
 
 .custom-options::-webkit-scrollbar-track {
     background: transparent;
+}
+
+
+/* =========================================================
+   ══════════════════════════════════════════════════════════
+   RESPONSIVE — de mayor a menor breakpoint
+   ══════════════════════════════════════════════════════════
+   ========================================================= */
+
+/* ── 1400px: reducir padding del header ── */
+@media (max-width: 1400px) {
+    .login-header-container {
+        padding: 0 clamp(20px, 3vw, 120px);
+    }
+}
+
+/* ── 1200px: grid flexible ── */
+@media (max-width: 1200px) {
+
+    .security-banner,
+    .grid {
+        width: calc(100% - 48px);
+    }
+
+    .grid {
+        grid-template-columns: minmax(0, 1.35fr) minmax(360px, 0.95fr);
+    }
+
+    .left-zone {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .login-title {
+        font-size: 34px;
+    }
+}
+
+/* ── 980px: grid de una columna ── */
+@media (max-width: 980px) {
+    .grid {
+        grid-template-columns: 1fr;
+        max-width: 580px;
+        width: calc(100% - 48px);
+    }
+
+    .right-zone-content {
+        width: 100%;
+    }
+
+    .right-box-register,
+    .alert-card {
+        min-height: auto;
+    }
+
+    .btn-outline {
+        width: 100%;
+    }
+
+    .login-form-wrapper {
+        max-width: 100%;
+    }
+}
+
+/* ── 768px: layout móvil/tablet ── */
+@media (max-width: 768px) {
+
+    /* Header */
+    .login-header-container {
+        width: calc(100% - 20px);
+        height: 64px;
+        padding: 0 18px;
+        border-radius: 12px;
+    }
+
+    .login-header-left {
+        gap: 20px;
+    }
+
+    .login-logo img {
+        width: 95px;
+    }
+
+    .login-nav {
+        gap: 16px;
+    }
+
+    .login-nav a {
+        font-size: 13px;
+    }
+
+    /* Ocultar texto del botón cerrar — solo ícono */
+    .btn-close-login span {
+        display: none;
+    }
+
+    /* Main */
+    .login-main {
+        padding-top: 16px;
+    }
+
+    /* Security banner */
+    .security-banner {
+        width: calc(100% - 32px);
+        margin-bottom: 18px;
+        font-size: 13px;
+    }
+
+    /* Grid */
+    .grid {
+        width: calc(100% - 32px);
+        max-width: 100%;
+    }
+
+    /* Left zone */
+    .left-zone {
+        padding: 28px 20px 24px;
+        min-height: unset;
+    }
+
+    /* Título */
+    .login-title {
+        font-size: 32px;
+        line-height: 1.15;
+        margin: 20px 0 22px;
+    }
+
+    /* Formulario: ancho total */
+    .login-form-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Campos */
+    .bbva-field input,
+    .bbva-field select {
+        height: 52px;
+        font-size: 15px;
+    }
+
+    /* Acciones: columna, botón full-width */
+    .login-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        margin-top: 18px;
+    }
+
+    .btn-login {
+        width: 100%;
+        height: 52px;
+        font-size: 15px;
+        padding: 0;
+        text-align: center;
+    }
+
+    .forgot-password {
+        text-align: center;
+    }
+
+    /* Cajas derechas */
+    .right-box-register {
+        padding: 24px 20px;
+        min-height: unset;
+    }
+
+    .alert-card {
+        padding: 32px 20px 20px;
+    }
+
+    /* Assets panel */
+    .side-asset-slot {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 28px;
+    }
+
+    .side-title {
+        font-size: 26px;
+        margin-bottom: 16px;
+    }
+
+    .side-text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    /* Alert card */
+    .alert-title {
+        font-size: 22px;
+        margin-bottom: 28px;
+    }
+
+    .alert-content {
+        grid-template-columns: 44px 1fr;
+        gap: 14px;
+    }
+
+    .alert-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .alert-text {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    /* Footer */
+    .login-footer {
+        margin-top: 32px;
+        padding: 28px 20px;
+        border-radius: 14px;
+    }
+
+    .footer-main-row,
+    .footer-bottom-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .footer-links {
+        gap: 16px 22px;
+        margin-top: 32px;
+        margin-bottom: 28px;
+    }
+
+    .footer-links a {
+        font-size: 13px;
+    }
+}
+
+/* ── 480px: ajustes adicionales pantallas medianas pequeñas ── */
+@media (max-width: 480px) {
+
+    .login-header-container {
+        width: calc(100% - 16px);
+        height: 56px;
+        padding: 0 14px;
+    }
+
+    .login-logo img {
+        width: 80px;
+    }
+
+    .login-nav a {
+        font-size: 12.5px;
+    }
+
+    .login-nav {
+        gap: 12px;
+    }
+
+    .security-banner {
+        width: calc(100% - 24px);
+        font-size: 12.5px;
+    }
+
+    .grid {
+        width: calc(100% - 24px);
+    }
+
+    .left-zone,
+    .right-box-register,
+    .alert-card {
+        border-radius: var(--card-radius-sm);
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .login-title {
+        font-size: 26px;
+    }
+
+    .side-title {
+        font-size: 23px;
+    }
+
+    .alert-title {
+        font-size: 20px;
+    }
+}
+
+/* ANTES del @media (max-width: 430px) */
+.btn-user-mobile {
+    display: none;
+}
+
+/* ── 430px: iPhone 14 Pro Max y similares ── */
+@media (max-width: 430px) {
+
+    /* Mostrar ícono usuario */
+    .btn-user-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border: none;
+        background: transparent;
+        color: var(--bbva-navy);
+        cursor: pointer;
+        padding: 0;
+    }
+
+    /* Candado arriba del texto */
+    .security-banner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        font-size: 15px;
+        gap: 15px;
+    }
+
+    :root {
+        --grid-side-pad: 12px;
+    }
+
+    .login-header-container {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+    }
+
+    .login-header-left {
+        display: contents;
+        /* los hijos participan directamente en el grid */
+    }
+
+
+    .login-logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Botón X: columna 3 */
+    .login-header-right {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .login-logo img {
+        width: 80px;
+    }
+
+    .login-nav {
+        display: none;
+    }
+
+    .login-nav a {
+        font-size: 15px;
+    }
+
+
+    .security-banner svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .grid {
+        width: calc(100% - 20px);
+        gap: 14px;
+    }
+
+    .left-zone,
+    .right-box-register,
+    .alert-card {
+        border-radius: 10px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .left-zone {
+        padding-top: 24px;
+        padding-bottom: 20px;
+    }
+
+    .login-title {
+        font-size: 32px;
+        line-height: 40px;
+        margin: 16px 0 32px;
+    }
+
+    .bbva-field {
+        margin-bottom: 10px;
+    }
+
+    .bbva-field input,
+    .bbva-field select {
+        height: 52px;
+        font-size: 14px;
+    }
+
+    .custom-select-trigger {
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .btn-login {
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .forgot-password {
+        font-size: 13px;
+    }
+
+    .right-box-register {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .side-asset-slot {
+        width: 68px;
+        height: 68px;
+        margin-bottom: 18px;
+    }
+
+    .side-title {
+        font-size: 24px;
+        padding-top: 90px;
+        margin-bottom: 24px;
+    }
+
+    .side-text {
+        font-size: 15px;
+        margin-bottom: 16px;
+    }
+
+    .btn-outline {
+        height: 48px;
+        font-size: 15px;
+    }
+
+    .alert-card {
+        padding-top: 24px;
+        padding-bottom: 16px;
+    }
+
+    .alert-title {
+        font-size: 24px;
+        margin-bottom: 40px;
+        margin-top: 10px;
+    }
+
+    .alert-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .alert-text {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .alert-slider {
+        padding-top: 20px;
+        gap: 16px;
+    }
+
+    .alert-counter {
+        font-size: 13px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-top: 24px;
+        margin-bottom: 20px;
+    }
+
+    .login-footer {
+        border-radius: 12px;
+        padding: 24px 16px;
+    }
+}
+
+
+/* ── 360px: Android compactos ── */
+@media (max-width: 360px) {
+
+    .login-header-container {
+        padding: 0 10px;
+    }
+
+    .login-nav {
+        display: none;
+        /* en pantallas muy pequeñas oculta las tabs */
+    }
+
+    .grid {
+        width: calc(100% - 16px);
+        gap: 12px;
+    }
+
+    .left-zone,
+    .right-box-register,
+    .alert-card {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .login-title {
+        font-size: 22px;
+    }
+
+    .bbva-field input,
+    .bbva-field select,
+    .custom-select-trigger {
+        height: 48px;
+    }
 }
