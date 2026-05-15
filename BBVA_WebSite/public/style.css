@@ -48,7 +48,7 @@ html {
 body {
     background-color: var(--bbva-bg-gray);
     font-family: var(--font-primary);
-    color: var(--bbva-text-dark);
+    color: rgb(0, 0, 0, 0.0);
     line-height: 1.5;
 }
 
@@ -2461,7 +2461,314 @@ body {
     display: none !important;
 }
 
+/* --- ESTILO BANNER BIENVENIDA --- */
+.welcome-notification {
+    background-color: var(--bbva-navy); /* Azul BBVA */
+    color: white;
+    padding: 12px 20px;
+    position: relative;
+    z-index: 1001;
+    border-bottom: 3px solid var(--bbva-strong-blue);
+    animation: slideDown 0.5s ease-out;
+    /* Sombra: 0 (H), 4px (V hacia abajo), 10px (difuminado), color azul con transparencia */
+    box-shadow: 0 6px 30px rgba(5, 68, 255, 0.3);
+}
+
+.welcome-notification__container {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome-notification__text {
+    flex-grow: 1;
+    font-family: 'BentonSansBBVA', Arial, sans-serif;
+    font-size: 1.1rem;
+}
+
+.welcome-label {
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.welcome-name {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.welcome-notification__close {
+    background: var(--bbva-strong-blue);
+    border: 1px solid var(--bbva-white);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.welcome-notification__close:hover {
+    background: var(--bbva-navy);
+}
+
+/* Animación de entrada */
+@keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
 /* ═══════════════════════════════════════════════
+   FULLSCREEN MENU BBVA
+═══════════════════════════════════════════════ */
+
+.bbva-menu-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(247,248,248,0.97);
+    backdrop-filter: blur(6px);
+    z-index: 999999;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+
+    overflow-y: auto;
+}
+
+.bbva-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* HEADER */
+.bbva-menu-header {
+    width: 100%;
+    height: 88px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 80px;
+
+    background: white;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 20;
+
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+
+.bbva-menu-header-left {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.bbva-menu-logo {
+    width: 170px;
+    height: auto;
+}
+
+.bbva-menu-top-nav {
+    display: flex;
+    gap: 42px;
+}
+
+.bbva-menu-top-nav a {
+    text-decoration: none;
+    color: #001391;
+    font-weight: 700;
+    font-size: 15px;
+    padding-bottom: 6px;
+}
+
+.bbva-menu-top-nav a.active {
+    border-bottom: 2px solid #001391;
+}
+
+.bbva-menu-close {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    color: #001391;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* BODY */
+.bbva-menu-body {
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 360px;
+
+    gap: 70px;
+
+    padding:
+        60px
+        60px
+        100px;
+}
+
+/* LEFT */
+.bbva-menu-title {
+    font-family: var(--font-secondary);
+    font-size: 48px;
+    color: #070E46;
+    margin-bottom: 36px;
+}
+
+.bbva-opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 24px;
+}
+
+.bbva-op-card {
+    background: white;
+    border-radius: 18px;
+
+    padding: 34px;
+
+    min-height: 340px;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.bbva-op-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.bbva-op-card img {
+    width: 92px;
+    height: 92px;
+    object-fit: contain;
+    margin-bottom: 26px;
+}
+
+.bbva-op-card h3 {
+    font-size: 24px;
+    line-height: 1.15;
+    color: #070E46;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+.bbva-op-card p {
+    font-size: 17px;
+    color: #4d4d4d;
+    line-height: 1.6;
+}
+
+.bbva-menu-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+
+    margin-top: 32px;
+}
+
+.bbva-menu-pagination span {
+    background: white;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-style: italic;
+}
+
+.bbva-menu-pagination button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* FEATURE CARD */
+.bbva-feature-card {
+    margin-top: 60px;
+
+    background: white;
+    border-radius: 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    padding: 50px;
+}
+
+.bbva-feature-image img {
+    width: 220px;
+}
+
+.bbva-feature-content h2 {
+    font-family: var(--font-secondary);
+    color: #070E46;
+    font-size: 32px;
+    margin-bottom: 14px;
+}
+
+.bbva-feature-content h4 {
+    font-size: 15px;
+    margin-bottom: 24px;
+    color: #001391;
+}
+
+.bbva-feature-content ul {
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+.bbva-feature-content li {
+    margin-bottom: 10px;
+    color: #4d4d4d;
+    font-size: 16px;
+}
+
+.bbva-feature-content button {
+    border: none;
+    background: #0C6DFF;
+    color: white;
+
+    padding: 18px 40px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+/* RIGHT */
+.bbva-menu-right {
+    padding-top: 60px;
+}
 
 .bbva-menu-links,
 .bbva-secondary-links {
@@ -2474,7 +2781,7 @@ body {
     text-decoration: none;
     color: #001391;
 
-    font-size: 24px;
+    font-size: 15px;
     font-weight: 700;
 
     padding: 16px 0;
@@ -2483,7 +2790,7 @@ body {
 }
 
 .bbva-secondary-links a {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
 }
 

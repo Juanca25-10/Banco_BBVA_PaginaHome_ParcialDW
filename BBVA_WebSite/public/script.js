@@ -7,6 +7,35 @@ window.addEventListener('scroll', () => {
     }
 });
 
+/* --- BANNER DE BIENVENIDA (SIEMPRE ACTIVO AL CARGAR) --- */
+function closeWelcomeBanner() {
+    const banner = document.getElementById('welcomeBanner');
+    const header = document.getElementById('bbva-header');
+
+    if (banner) {
+        // 1. Animación de salida rápida
+        banner.style.display = 'none';
+        
+        // 2. Devolvemos el Header a su posición original (1.5rem que tienes en CSS)
+        if (header) {
+            header.style.top = '1.5rem';
+        }
+    }
+}
+
+// Esta parte se asegura de que el Header no tape el mensaje azul al entrar
+window.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('welcomeBanner');
+    const header = document.getElementById('bbva-header');
+
+    if (banner && header) {
+        // Empujamos el header hacia abajo lo suficiente para que se vea el mensaje azul
+        // 5.5rem suele ser la medida ideal para que no se pisen las letras
+        header.style.top = '5.5rem';
+        header.style.transition = 'top 0.3s ease';
+    }
+});
+
 /* =========================================================
    CARRUSEL HERO BBVA
    Desarrollado por: [Tu nombre]
@@ -243,7 +272,6 @@ window.addEventListener('scroll', () => {
 /* ═══════════════════════════════════════════════
    FULLSCREEN MENU BBVA
 ═══════════════════════════════════════════════ */
-
 (function initFullscreenMenu() {
 
     const menu = document.getElementById('bbvaMenuOverlay');
