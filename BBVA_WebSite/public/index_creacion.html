@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BBVA - Abre tu Cuenta</title>
+  <link rel="stylesheet" href="Style_creacion.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="#" class="nav-logo">
+      <svg width="72" height="22" viewBox="0 0 72 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="18" font-family="'Nunito Sans', sans-serif" font-weight="900" font-size="22" fill="#004481" letter-spacing="-0.5">BBVA</text>
+      </svg>
+    </a>
+
+    
+
+    <div class="nav-actions">
+      <a href="#" class="nav-account-link">
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        Cuenta en Línea de Nómina
+      </a>
+      <button class="btn-abrir">Abrir mi cuenta</button>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main-wrapper">
+
+    <!-- LEFT PANEL -->
+    <section class="left-panel">
+      <div class="left-content">
+        <span class="badge">
+          <span class="badge-dot"></span>
+          Cuenta en Línea de Nómina BBVA
+        </span>
+
+        <h1 class="hero-title">
+          Abre tu Cuenta<br>
+          y participa por<br>
+          <span class="hero-highlight">120 millones</span>
+        </h1>
+
+        <p class="hero-sub">
+          Mantén tu saldo mínimo y participa en el sorteo.<br>
+          Es fácil, rápido y 100% en línea.
+        </p>
+
+        <div class="features-row">
+          <!-- Seguro -->
+          <div class="feature-item">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="feat-text">
+              <strong>Seguro</strong>
+              <p>Tus datos protegidos con altos estándares de seguridad.</p>
+            </div>
+          </div>
+          <!-- En minutos -->
+          <div class="feature-item">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="feat-text">
+              <strong>En minutos</strong>
+              <p>Abre tu cuenta de manera rápida y 100% digital.</p>
+            </div>
+          </div>
+          <!-- Participa -->
+          <div class="feature-item">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 12 20 22 4 22 4 12"/>
+                <rect x="2" y="7" width="20" height="5"/>
+                <line x1="12" y1="22" x2="12" y2="7"/>
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+              </svg>
+            </div>
+            <div class="feat-text">
+              <strong>Participa</strong>
+              <p>Por 120 millones manteniendo tu saldo mínimo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-note">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <span>Promoción válida del 06 de abril de 2026 al 31 de enero de 2027.&nbsp;<a href="#" class="promo-link">Aplican T&amp;C.</a></span>
+        </div>
+      </div>
+
+      <!-- Decorative shapes -->
+      <div class="deco-shape deco-dark"></div>
+      <div class="deco-shape deco-light"></div>
+    </section>
+
+    <!-- RIGHT PANEL (FORM CARD) -->
+    <section class="right-panel">
+      <div class="form-card">
+        <h2 class="form-title">Completa tus datos</h2>
+        <p class="form-sub">Ingresa tu información personal para comenzar.</p>
+
+        <!-- Datos personales -->
+        <div class="form-section-block">
+          <p class="section-label">Datos personales</p>
+          <div class="form-grid">
+            <div class="input-group full-span">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              <input type="text" id="nombre" placeholder="Nombre" class="form-input" autocomplete="name" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Datos de acceso -->
+        <div class="form-section-block">
+          <p class="section-label">Datos de acceso</p>
+          <div class="form-grid">
+            <div class="input-group full-span">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <input type="email" id="email" placeholder="Correo electrónico" class="form-input" autocomplete="email" />
+            </div>
+
+            <div class="input-group">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <input type="password" id="password" placeholder="Contraseña" class="form-input" autocomplete="new-password" />
+              <button type="button" class="toggle-pass" data-target="password" aria-label="Mostrar contraseña">
+                <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="input-group">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <input type="password" id="confirm-password" placeholder="Confirmar contraseña" class="form-input" autocomplete="new-password" />
+              <button type="button" class="toggle-pass" data-target="confirm-password" aria-label="Mostrar contraseña">
+                <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Link autorización -->
+        <a href="#" class="auth-link">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          Ver Autorización de Tratamiento de Datos Personales
+        </a>
+
+        <!-- Checkbox -->
+        <div class="checkbox-row">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="terms" />
+            <span class="checkmark"></span>
+          </label>
+          <p class="checkbox-label">
+            Acepto a BBVA como responsable de mis datos personales conforme
+            a la <a href="#" class="inline-link">Autorización de Tratamiento de Datos Personales</a>.
+          </p>
+        </div>
+
+        <!-- Validation message -->
+        <p class="validation-msg" id="validationMsg"></p>
+
+        <!-- Submit -->
+        <button class="btn-comenzar" id="btnComenzar" type="button">Comenzar</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script_creacion.js"></script>
+</body>
+</html>
