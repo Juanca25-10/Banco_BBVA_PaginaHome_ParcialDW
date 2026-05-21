@@ -78,3 +78,5 @@ router.post("/register", async (req, res) => {
 });
 
 module.exports = router;
+
+// 2. Loli

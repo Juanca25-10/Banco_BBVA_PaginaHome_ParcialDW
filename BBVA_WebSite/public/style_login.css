@@ -1548,9 +1548,7 @@ body {
     to   { transform: scaleX(0); }
 }
 
-/* ==========================================================
-   RESPONSIVE — ajustes para tabs en móvil
-   ========================================================== */
+
 @media (max-width: 480px) {
     .bbva-tab-btn {
         font-size: 14px;
@@ -1562,4 +1560,5 @@ body {
         width: calc(100vw - 24px);
     }
 }
+
 
