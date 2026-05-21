@@ -1,11 +1,14 @@
 /* =========================================================
    LOGIN BBVA — script_login.js
+   Incluye: Toggle passwords · Carrusel · Tabs · Toast · Registro
    ========================================================= */
 
 'use strict';
 
-/* ── Toggle de contraseñas ── */
-(function initPasswordToggle() {
+/* ─────────────────────────────────────────────────────────
+   1. TOGGLE DE CONTRASEÑAS (reutilizable)
+   ───────────────────────────────────────────────────────── */
+(function initPasswordToggles() {
 
     function bindToggle(inputId, btnId, eyeOpenId, eyeClosedId) {
         var input     = document.getElementById(inputId);
@@ -17,59 +20,218 @@
 
         btn.addEventListener('click', function () {
             var isPassword = input.type === 'password';
-
             input.type              = isPassword ? 'text'  : 'password';
             eyeOpen.style.display   = isPassword ? 'none'  : 'block';
             eyeClosed.style.display = isPassword ? 'block' : 'none';
-
             btn.setAttribute('aria-label', isPassword ? 'Ocultar contraseña' : 'Mostrar contraseña');
         });
     }
 
-    bindToggle('passwordField', 'togglePwd', 'eyeOpen', 'eyeClosed');
-    bindToggle('passwordConfirmField', 'togglePwdConfirm', 'eyeOpenConfirm', 'eyeClosedConfirm');
+    // Login
+    bindToggle('loginPassword',      'toggleLoginPwd',      'eyeLoginOpen',      'eyeLoginClosed');
+    // Registro
+    bindToggle('regPassword',        'toggleRegPwd',        'eyeRegOpen',        'eyeRegClosed');
+    bindToggle('regPasswordConfirm', 'toggleRegPwdConfirm', 'eyeRegOpenConfirm', 'eyeRegClosedConfirm');
 
 })();
 
 
-/* ── Carrusel de alertas de seguridad ── */
+/* ─────────────────────────────────────────────────────────
+   2. TABS  (Login ↔ Registrarse)
+   ───────────────────────────────────────────────────────── */
+(function initTabs() {
+
+    var btnLogin    = document.getElementById('tabBtnLogin');
+    var btnRegister = document.getElementById('tabBtnRegister');
+    var panelLogin  = document.getElementById('tabLogin');
+    var panelReg    = document.getElementById('tabRegister');
+    var btnSide     = document.getElementById('btnSideRegister'); // botón del panel derecho
+
+    if (!btnLogin || !btnRegister) return;
+
+    function activate(activeBtn, activePanel, inactiveBtn, inactivePanel) {
+        // Panel activo
+        activeBtn.classList.add('active');
+        activeBtn.setAttribute('aria-selected', 'true');
+        activePanel.classList.add('active');
+
+        // Panel inactivo
+        inactiveBtn.classList.remove('active');
+        inactiveBtn.setAttribute('aria-selected', 'false');
+        inactivePanel.classList.remove('active');
+    }
+
+    btnLogin.addEventListener('click', function () {
+        activate(btnLogin, panelLogin, btnRegister, panelReg);
+    });
+
+    btnRegister.addEventListener('click', function () {
+        activate(btnRegister, panelReg, btnLogin, panelLogin);
+    });
+
+    // El botón "Regístrate" del panel derecho abre el Tab 2
+    if (btnSide) {
+        btnSide.addEventListener('click', function () {
+            activate(btnRegister, panelReg, btnLogin, panelLogin);
+            // Scroll suave al top del left-zone
+            var lz = document.querySelector('.left-zone');
+            if (lz) lz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+})();
+
+
+/* ─────────────────────────────────────────────────────────
+   3. VALIDACIÓN DEL FORMULARIO DE REGISTRO
+   ───────────────────────────────────────────────────────── */
+(function initRegisterValidation() {
+
+    var form            = document.getElementById('registerForm');
+    var nombre          = document.getElementById('regNombre');
+    var email           = document.getElementById('regEmail');
+    var password        = document.getElementById('regPassword');
+    var passwordConfirm = document.getElementById('regPasswordConfirm');
+    var errorMsg        = document.getElementById('regPasswordError');
+
+    if (!form) return;
+
+    // Marcar campo con error o limpiarlo
+    function markError(field, hasError) {
+        field.style.borderColor = hasError ? '#c0392b' : '';
+    }
+
+    // Limpiar bordes al escribir
+    [nombre, email, password, passwordConfirm].forEach(function (field) {
+        if (!field) return;
+        field.addEventListener('input', function () {
+            markError(field, false);
+            if (field === password || field === passwordConfirm) {
+                if (errorMsg) errorMsg.style.display = 'none';
+            }
+        });
+    });
+
+    form.addEventListener('submit', function (e) {
+
+        var valid = true;
+
+        // Nombre obligatorio
+        if (!nombre || nombre.value.trim() === '') {
+            markError(nombre, true);
+            valid = false;
+        }
+
+        // Email obligatorio y formato básico
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email.value.trim())) {
+            markError(email, true);
+            valid = false;
+        }
+
+        // Password: mínimo 6 caracteres
+        if (!password || password.value.length < 6) {
+            markError(password, true);
+            valid = false;
+        }
+
+        // Las contraseñas deben coincidir
+        if (!passwordConfirm || password.value !== passwordConfirm.value) {
+            markError(passwordConfirm, true);
+            if (errorMsg) {
+                errorMsg.textContent = password.value.length < 6
+                    ? 'La contraseña debe tener al menos 6 caracteres.'
+                    : 'Las contraseñas no coinciden.';
+                errorMsg.style.display = 'block';
+            }
+            valid = false;
+        }
+
+        if (!valid) {
+            e.preventDefault(); // Detener envío si hay errores
+        }
+    });
+
+})();
+
+
+/* ─────────────────────────────────────────────────────────
+   4. TOAST DE REGISTRO EXITOSO
+      Solo se activa si el elemento #bbvaToast existe en el DOM
+      (el servidor lo renderiza cuando registerSuccess = true)
+   ───────────────────────────────────────────────────────── */
+(function initToast() {
+
+    var toast    = document.getElementById('bbvaToast');
+    var closeBtn = document.getElementById('toastCloseBtn');
+
+    if (!toast || !closeBtn) return;  // No hay toast → no hacer nada
+
+    var AUTO_CLOSE_MS = 7000; // 7 segundos → cierre automático
+
+    function closeToast() {
+        toast.classList.add('closing');
+        // Esperar a que termine la animación de salida y luego recargar
+        toast.addEventListener('animationend', function () {
+            window.location.href = '/';   // Recarga → muestra Tab Login
+        }, { once: true });
+    }
+
+    // Cierre manual con el botón ×
+    closeBtn.addEventListener('click', closeToast);
+
+    // Cierre automático
+    var autoTimer = setTimeout(closeToast, AUTO_CLOSE_MS);
+
+    // Si el usuario pasa el mouse encima, pausar el auto-cierre
+    toast.addEventListener('mouseenter', function () {
+        clearTimeout(autoTimer);
+    });
+    toast.addEventListener('mouseleave', function () {
+        autoTimer = setTimeout(closeToast, 3000); // 3 s más al salir
+    });
+
+})();
+
+
+/* ─────────────────────────────────────────────────────────
+   5. CARRUSEL DE ALERTAS DE SEGURIDAD
+   ───────────────────────────────────────────────────────── */
 (function initAlertCarousel() {
 
-    var track     = document.getElementById('alertTrack');
-    var btnPrev   = document.getElementById('alertPrev');
-    var btnNext   = document.getElementById('alertNext');
-    var btnPause  = document.getElementById('alertPause');
-    var counter   = document.getElementById('alertCounter');
+    var track    = document.getElementById('alertTrack');
+    var btnPrev  = document.getElementById('alertPrev');
+    var btnNext  = document.getElementById('alertNext');
+    var btnPause = document.getElementById('alertPause');
+    var counter  = document.getElementById('alertCounter');
     var iconPause = document.getElementById('iconPause');
     var iconPlay  = document.getElementById('iconPlay');
 
     if (!track || !btnPrev || !btnNext || !btnPause || !counter) return;
 
-    var slides      = track.querySelectorAll('.alert-slide');
-    var total       = slides.length || 1;
-    var autoplayMs  = 3500;
-    var current     = 0;
-    var paused      = false;
-    var timer       = null;
+    var slides     = track.querySelectorAll('.alert-slide');
+    var total      = slides.length || 1;
+    var autoMs     = 3500;
+    var current    = 0;
+    var paused     = false;
+    var timer      = null;
 
     function updateA11y() {
-        slides.forEach(function (slide, index) {
-            slide.setAttribute('aria-hidden', index === current ? 'false' : 'true');
+        slides.forEach(function (s, i) {
+            s.setAttribute('aria-hidden', i === current ? 'false' : 'true');
         });
     }
 
     function goTo(index) {
         current = (index + total) % total;
         track.style.transform = 'translateX(-' + (current * 100) + '%)';
-        counter.textContent = (current + 1) + ' de ' + total;
+        counter.textContent   = (current + 1) + ' de ' + total;
         updateA11y();
     }
 
     function startAutoplay() {
         clearInterval(timer);
-        timer = setInterval(function () {
-            goTo(current + 1);
-        }, autoplayMs);
+        timer = setInterval(function () { goTo(current + 1); }, autoMs);
     }
 
     function stopAutoplay() {
@@ -79,16 +241,15 @@
 
     function togglePause() {
         paused = !paused;
-
         if (paused) {
             stopAutoplay();
             if (iconPause) iconPause.style.display = 'none';
-            if (iconPlay) iconPlay.style.display = 'block';
+            if (iconPlay)  iconPlay.style.display  = 'block';
             btnPause.setAttribute('aria-label', 'Reanudar autoplay');
         } else {
             startAutoplay();
             if (iconPause) iconPause.style.display = 'block';
-            if (iconPlay) iconPlay.style.display = 'none';
+            if (iconPlay)  iconPlay.style.display  = 'none';
             btnPause.setAttribute('aria-label', 'Pausar autoplay');
         }
     }
@@ -97,29 +258,23 @@
         goTo(current + 1);
         if (!paused) { stopAutoplay(); startAutoplay(); }
     });
-
     btnPrev.addEventListener('click', function () {
         goTo(current - 1);
         if (!paused) { stopAutoplay(); startAutoplay(); }
     });
-
     btnPause.addEventListener('click', togglePause);
 
     var alertCard = track.closest('.alert-card');
     if (alertCard) {
-        alertCard.addEventListener('mouseenter', function () {
-            if (!paused) stopAutoplay();
-        });
-        alertCard.addEventListener('mouseleave', function () {
-            if (!paused) startAutoplay();
-        });
+        alertCard.addEventListener('mouseenter', function () { if (!paused) stopAutoplay(); });
+        alertCard.addEventListener('mouseleave', function () { if (!paused) startAutoplay(); });
     }
 
+    // Touch / swipe
     var touchStartX = 0;
     track.addEventListener('touchstart', function (e) {
         touchStartX = e.touches[0].clientX;
     }, { passive: true });
-
     track.addEventListener('touchend', function (e) {
         var delta = touchStartX - e.changedTouches[0].clientX;
         if (Math.abs(delta) > 45) {
@@ -134,90 +289,39 @@
 })();
 
 
-/* ── Validación visual básica del formulario ── */
-(function initFormValidation() {
-
-    var btnLogin     = document.querySelector('.btn-login');
-    var docNumber    = document.getElementById('docNumber');
-    var password     = document.getElementById('passwordField');
-    var passwordConf = document.getElementById('passwordConfirmField');
-
-    if (!btnLogin) return;
-
-    btnLogin.addEventListener('click', function () {
-
-        var docVal      = docNumber ? docNumber.value.trim() : '';
-        var passVal     = password ? password.value.trim() : '';
-        var passConfVal = passwordConf ? passwordConf.value.trim() : '';
-
-        if (docNumber) docNumber.style.borderColor = docVal ? '' : '#c0392b';
-        if (password) password.style.borderColor = passVal ? '' : '#c0392b';
-        if (passwordConf) passwordConf.style.borderColor = passConfVal ? '' : '#c0392b';
-
-        if (!docVal || !passVal || !passConfVal) return;
-
-        if (passVal !== passConfVal) {
-            passwordConf.style.borderColor = '#c0392b';
-            return;
-        }
-
-        console.log('[BBVA Login Demo] Validación visual completada.');
-    });
-
-    [docNumber, password, passwordConf].forEach(function (field) {
-        if (!field) return;
-        field.addEventListener('input', function () {
-            field.style.borderColor = '';
-        });
-    });
-
-})();
-
-/* ── Custom Select BBVA ── */
-
+/* ─────────────────────────────────────────────────────────
+   6. CUSTOM SELECT BBVA
+   ───────────────────────────────────────────────────────── */
 (function initCustomSelect() {
 
-    const trigger = document.getElementById('customSelectTrigger');
-    const optionsBox = document.getElementById('customOptions');
-    const selected = document.getElementById('selectedOption');
+    var trigger    = document.getElementById('customSelectTrigger');
+    var optionsBox = document.getElementById('customOptions');
+    var selected   = document.getElementById('selectedOption');
 
     if (!trigger || !optionsBox || !selected) return;
 
-    const options = optionsBox.querySelectorAll('.custom-option');
+    var options = optionsBox.querySelectorAll('.custom-option');
 
     trigger.addEventListener('click', function () {
-
         optionsBox.classList.toggle('open');
         trigger.classList.toggle('active');
-
     });
 
     options.forEach(function (option) {
-
         option.addEventListener('click', function () {
-
-            options.forEach(o => o.classList.remove('active'));
-
+            options.forEach(function (o) { o.classList.remove('active'); });
             option.classList.add('active');
-
             selected.textContent = option.textContent;
-
             optionsBox.classList.remove('open');
             trigger.classList.remove('active');
-
         });
-
     });
 
     document.addEventListener('click', function (e) {
-
         if (!e.target.closest('.custom-select-wrapper')) {
-
             optionsBox.classList.remove('open');
             trigger.classList.remove('active');
-
         }
-
     });
 
 })();
