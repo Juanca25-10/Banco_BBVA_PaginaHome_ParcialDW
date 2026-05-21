@@ -7,6 +7,35 @@ window.addEventListener('scroll', () => {
     }
 });
 
+/* --- BANNER DE BIENVENIDA (SIEMPRE ACTIVO AL CARGAR) --- */
+function closeWelcomeBanner() {
+    const banner = document.getElementById('welcomeBanner');
+    const header = document.getElementById('bbva-header');
+
+    if (banner) {
+        // 1. Animación de salida rápida
+        banner.style.display = 'none';
+        
+        // 2. Devolvemos el Header a su posición original (1.5rem que tienes en CSS)
+        if (header) {
+            header.style.top = '1.5rem';
+        }
+    }
+}
+
+// Esta parte se asegura de que el Header no tape el mensaje azul al entrar
+window.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('welcomeBanner');
+    const header = document.getElementById('bbva-header');
+
+    if (banner && header) {
+        // Empujamos el header hacia abajo lo suficiente para que se vea el mensaje azul
+        // 5.5rem suele ser la medida ideal para que no se pisen las letras
+        header.style.top = '5.5rem';
+        header.style.transition = 'top 0.3s ease';
+    }
+});
+
 /* =========================================================
    CARRUSEL HERO BBVA
    Desarrollado por: [Tu nombre]
@@ -240,16 +269,49 @@ window.addEventListener('scroll', () => {
     
 })();
 
-function closeWelcomeBanner() {
-    const banner = document.getElementById('welcomeBanner');
-    if (banner) {
-        // Le añadimos una transición suave al cerrar
-        banner.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-        banner.style.opacity = '0';
-        banner.style.transform = 'translateY(-20px)';
-        
-        setTimeout(() => {
-            banner.remove();
-        }, 400);
+/* ═══════════════════════════════════════════════
+   FULLSCREEN MENU BBVA
+═══════════════════════════════════════════════ */
+(function initFullscreenMenu() {
+
+    const menu = document.getElementById('bbvaMenuOverlay');
+
+    const openDesktop = document.getElementById('menuToggleDesktop');
+    const openMobile = document.getElementById('menuToggleMobile');
+
+    const closeBtn = document.getElementById('closeFullscreenMenu');
+
+    if (!menu) return;
+
+    function openMenu() {
+        menu.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
-}
+
+    function closeMenu() {
+        menu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (openDesktop) {
+        openDesktop.addEventListener('click', openMenu);
+    }
+
+    if (openMobile) {
+        openMobile.addEventListener('click', function(e) {
+            e.preventDefault();
+            openMenu();
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeMenu);
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMenu();
+        }
+    });
+
+})();
