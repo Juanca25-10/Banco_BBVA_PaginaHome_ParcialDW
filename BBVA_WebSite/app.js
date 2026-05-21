@@ -42,3 +42,5 @@ app.use("/auth", require("./routes/auth"));
 app.listen(5000, () => {
     console.log(" Servidor listo en http://localhost:5000");
 });
+
+// 2. Loli
